@@ -19,7 +19,18 @@ function Color(name, hex, count, id) {
   }
 }
 
-
 function getNextColorSeqId() {
   return COLOR_ID_SEQ++;
+}
+
+function addColorToLegend(color) {
+  legend[color.id] = color;
+  console.log("saved " + color.id + " to dictionary");
+  $(".cap" + color.id).css('background-color', '#' + color.hex);
+}
+
+function deleteColorFromLegend(id) {
+  if (legend[id.val()]) {
+    delete legend[id.val()];
+  }
 }

@@ -18,35 +18,38 @@
 </head>
 <body>
 
-<div id="phil_dont_touch">
+  <div id="phil_dont_touch">
 
+    <div class="container">
+      <form id="legend" action="#">
 
-
-  <div class="container">
-  <form id="legend" action="#">
-    <div class="color_input hidden">
-      <input type="text" required placeholder="Cap Name">
-      <input type="number" required placeholder="Count">
-      <input name="hex" type="text" required>
-      <input type="hidden"/>
-      <button class="color_delete" type="button"><i class="fa fa-trash-o"></i></button>
+      </form>
+      <button id="add_legend"><i class="fa fa-plus-square-o"></i> Row</button>
     </div>
-  </form>
-  <button id="add_legend"><i class="fa fa-plus-square-o"></i> Row</button>
+
+    <form id="testform" action="#" class="container">
+      <input type="number" id="x" required placeholder="Length"> ft <i class="fa fa-times"></i>
+      <input type="number" id="y" required placeholder="Width"> ft
+      <button id="create_grid"><i class="fa fa-refresh"></i> Surface</button>
+    </form>
+
+    <div class="selectable" id="grid">
+     <!--  <form id="testform" action="#" class="container">
+        <input type="number" id="x" required placeholder="Length"> ft <i class="fa fa-times"></i>
+        <input type="number" id="y" required placeholder="Width"> ft
+        <button id="create_grid"><i class="fa fa-refresh"></i> Surface</button>
+      </form> -->
+
+    </div>
+
   </div>
 
-  <form id="testform" action="#" class="container">
-    <input type="number" id="x" required placeholder="Length"> ft <i class="fa fa-times"></i>
-    <input type="number" id="y" required placeholder="Width"> ft
-    <button id="create_grid"><i class="fa fa-refresh"></i> Surface</button>
-  </form>
-
-  <div class="selectable" id="grid">
-
-
+  <div class="color_input hidden">
+    <input type="text" required placeholder="Cap Name">
+    <input type="number" required placeholder="Count">
+    <input name="hex" type="text" required>
+    <input type="hidden"/>
+    <button class="color_delete" type="button"><i class="fa fa-trash-o"></i></button>
   </div>
-
-</div>
-
 </body>
 </html>

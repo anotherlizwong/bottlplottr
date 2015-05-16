@@ -4,7 +4,8 @@
   border-radius: 150px;
   background-color: green;
 }
-.cap.empty {
+
+.empty > .cap {
   background-color: transparent;
   border: 4px dashed #999;
 }

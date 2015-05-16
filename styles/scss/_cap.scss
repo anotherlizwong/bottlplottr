@@ -4,8 +4,8 @@
   border-radius: $cap-diameter;
   background-color: $cap-color;
   // border: 10px dotted white;
-  &.empty {
-    background-color: $cell-color;
-    border: 4px dashed $gray-light;
-  }
+}
+.empty > .cap {
+  background-color: $cell-color;
+  border: 4px dashed $gray-light;
 }

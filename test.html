@@ -4,25 +4,32 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <link rel="stylesheet" type="text/css" href="styles/css/style.css">
-
+  <script src="scripts/jquery-2.1.4.js"></script>
+  <script src="scripts/jquery.event.drag-2.2.js"></script>
+  <script src="scripts/jquery.event.drop-2.2.js"></script>
+  <script src="scripts/spectrum.js"></script>
+  <script src="scripts/cap.drag.js"></script>
+  <script src="scripts/scripts.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles/css/style.css">
+  <link rel="stylesheet" type="text/css" href="styles/spectrum.css">
 </head>
 <body>
   <div id="grid">
   <div class="row">
     <div class="cell">
+      <div class="cap drag"></div>
+    </div>
+    <div class="cell">
+      <div class="cap drag"></div>
+    </div>
+    <div class="cell empty">
       <div class="cap"></div>
     </div>
-    <div class="cell">
+    <div class="cell empty">
       <div class="cap"></div>
     </div>
-    <div class="cell">
-      <div class="cap empty"></div>
-    </div>
-    <div class="cell">
-      <div class="cap empty"></div>
-    </div>
-    <div class="cell ">
-      <div class="cap empty"></div>
+    <div class="cell empty ">
+      <div class="cap"></div>
     </div>
   </div>
   <div class="row">

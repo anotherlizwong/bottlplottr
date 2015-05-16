@@ -30,7 +30,7 @@ $(document).ready(function () {
     clearGrid();
     generateGrid();
     // clearInput();
-    $("#grid").selectable({
+    $(".selectable").selectable({
       filter: ".cap"
     });
     return false;
@@ -65,7 +65,7 @@ $(document).ready(function () {
   addColorToLegend(new Color("test", "5e3a3a", 10, 0));
   addColorToLegend(new Color("test2", "111111", 10, 1));
 
-  $("#grid").selectable({
+  $(".selectable").selectable({
     filter: ".cap"
   });
 });
@@ -143,10 +143,10 @@ function addColor() {
   newguy.find(".color_edit").click(function(event) {
     newguy.find(".color_save").removeClass("hidden");
     newguy.find(".color_edit").addClass("hidden");
-    newguy.find("[name=name]").attr('readonly', false).removeClass("foobar");
+    newguy.find("[name=name]").attr('readonly', false);
     newguy.find("[name=hex]").attr('disabled', false);
     newguy.find("[name=hex]").spectrum({disabled: false});
-    newguy.find("[name=number]").attr('readonly', false).removeClass("foobar");
+    newguy.find("[name=number]").attr('readonly', false);
 
   });
 }

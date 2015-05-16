@@ -22,9 +22,7 @@ input {
   font-size: 1.2em;
   &:focus {
     background: rgba(255,255,255, .7);
-    -webkit-transition-duration: 0.2s;
-    -moz-transition-duration: 0.2s;
-    transition-duration: 0.2s;
+    @include transition();
   }
 }
 input:not([type=submit]):not([type=file]) {

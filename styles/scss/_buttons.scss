@@ -5,12 +5,10 @@ button {
   font-size: 1.5em;
   line-height: 1.5em;
   color: $text-color;
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  transition-duration: 0.2s;
   &:hover {
     color: darken($text-color, 30%);
     // text-decoration: underline;
     background-color: darken($base-color, 30%);
   }
+  @include transition();
 }

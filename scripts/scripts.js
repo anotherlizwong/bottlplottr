@@ -138,6 +138,11 @@ function generateGrid() {
   var height_in = parseInt($('#y_in').val()); // height
   var width = parseInt($('#x_ft').val()); // width
   var width_in = parseInt($('#x_in').val()); // width
+  height = height? height:0;
+  height_in = height_in? height_in:0;
+  width = width? width:0;
+  width_in = width_in? width_in:0;
+
 
   console.log(height * 12 + height_in + "inches");
   console.log(width  * 12 + width_in + "inches");

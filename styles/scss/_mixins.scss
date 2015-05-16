@@ -17,28 +17,34 @@
 }
 
 @mixin material-hover($level: 1) {
-   @if $level == 0 {
-    &:hover {
-      @include material-shadow(1);
-      @include transform(translateY(0px));
-    }
+ @if $level == 0 {
+  &:hover {
+    @include material-shadow(1);
+    @include transform(translateY(0px));
   }
-  @if $level == 1 {
-    &:hover {
-      @include material-shadow(2);
-      @include transform(translateY(-2px));
-    }
+}
+@if $level == 1 {
+  &:hover {
+    @include material-shadow(2);
+    @include transform(translateY(-2px));
   }
-  @if $level == 2 {
-    &:hover {
-      @include material-shadow(3);
-      @include transform(translateY(-5px));
-    }
+}
+@if $level == 2 {
+  &:hover {
+    @include material-shadow(3);
+    @include transform(translateY(-5px));
   }
-   @if $level == 3 {
-    &:hover {
-      @include material-shadow(4);
-      @include transform(translateY(-8px));
-    }
+}
+@if $level == 3 {
+  &:hover {
+    @include material-shadow(4);
+    @include transform(translateY(-8px));
   }
+}
+}
+
+@mixin transition($length: 0.2) {
+  -webkit-transition-duration: $length + s;
+  -moz-transition-duration: $length + s;
+  transition-duration: $length + s;
 }

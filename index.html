@@ -3,21 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <title>Bott'l Plott'r - Plan your masterpiece</title>
-  <script src="scripts/scripts.js"></script>
   <script src="scripts/jquery-2.1.4.js"></script>
   <script src="scripts/jquery.event.drag-2.2.js"></script>
   <script src="scripts/jquery.event.drop-2.2.js"></script>
+  <script src="scripts/scripts.js"></script>
+
+  <style type="text/css">
+
+    .grid-cell {
+      border:solid;
+      color: aqua;
+      padding: 1px;
+      height: 10px;
+      width: 10px;
+    }
+
+    .grid-offset {
+      margin-left:5px;
+    }
+
+  </style>
+
 </head>
 <body>
 
 <div id="phil_dont_touch">
 
-  <form>
-    <input type="text" name="x"/>
-    <input type="text" name="y"/>
-    <button>Create Table</button>
+  <form id="testform" action="#">
+    <input type="number" id="x" required>
+    <input type="number" id="y" required>
+    <button id="create_grid">Create Table</button>
   </form>
-
   <div id="grid">
 
 

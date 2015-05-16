@@ -1,7 +1,8 @@
 #grid {
   border: 1px solid $black;
   background: #fff url($grid-background) repeat right top;
-
+  padding: $buffer;
+  overflow: auto;
   .cell {
     background-color: $cell-color;
     float: left;

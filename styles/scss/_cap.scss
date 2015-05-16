@@ -1,10 +1,11 @@
 .cap {
-  width: $cap-diameter - $cap-diameter/10;
-  height: $cap-diameter - $cap-diameter/10;
+  width: $cap-diameter - $buffer;
+  height: $cap-diameter - $buffer;
   border-radius: $cap-diameter;
   background-color: $cap-color;
+  // border: 10px dotted white;
   &.empty {
     background-color: $cell-color;
-    border: 1px solid $gray-light;
+    border: 4px dashed $gray-light;
   }
 }

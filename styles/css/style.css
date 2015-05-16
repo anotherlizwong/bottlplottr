@@ -6,12 +6,14 @@
 }
 .cap.empty {
   background-color: transparent;
-  border: 1px solid #999;
+  border: 4px dashed #999;
 }
 
 #grid {
   border: 1px solid #000;
   background: #fff url("../../assets/woodtexture7.jpg") repeat right top;
+  padding: 15px;
+  overflow: auto;
 }
 #grid .cell {
   background-color: transparent;

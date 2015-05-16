@@ -87,6 +87,7 @@ function generateGrid() {
 
   var count = 0;
   var width = 0;
+  var height = 0;
   for (var i = 0; i < _y; i++) {
 
     var row = $('<div />').addClass('row');
@@ -100,15 +101,17 @@ function generateGrid() {
       cap.appendTo(cell);
       cell.appendTo(row);
       if(i ==0) {
-        width += 55;
+        width += 52.5;
       }
     }
 
+    height += 50;
 
     row.appendTo($("#grid"));
   }
 
   $("#grid").css("width", width);
+  $("#grid").css("height", height);
 
   console.log("There are " + count + " free cap spots");
 }

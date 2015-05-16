@@ -1,0 +1,38 @@
+.container {
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid $off-white-border;
+  background-color: $off-white;
+  @include border-radius(1px);
+  @include material-shadow(1);
+  &:hover {
+    @include material-shadow(2);
+  }
+}
+
+//   animation-name: shadow;
+//   animation-duration: 5s;
+//   animation-play-state: paused;
+//   &:hover {
+//     animation-play-state: running;
+//   }
+// }
+
+// @keyframes shadow {
+//   from {
+//     @include material-shadow(1);
+//   }
+//   to {
+//     @include material-shadow(3);
+//   }
+// }
+
+input {
+  border: 1px solid $off-white-border;
+  padding: 15px;
+  background: $white;
+  margin: 0 0 10px 0px;
+}
+input:not([type=submit]):not([type=file]) {
+  // intentionally blank
+}

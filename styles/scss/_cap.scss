@@ -2,7 +2,7 @@
   width: $cap-diameter - $buffer*2;
   height: $cap-diameter - $buffer*2;
   margin: $buffer;
-  border-radius: $cap-diameter;
+  @include border-radius($cap-diameter);
   background-color: $cap-color;
   // border: 10px dotted white;
 }
@@ -35,9 +35,9 @@ $micro-cap: $cap-diameter*.75;
     background-image: none;
     width: $micro-cap;
     height: $micro-cap;
-    border-radius: $micro-cap;
+    @include border-radius($micro-cap);
     .sp-preview-inner {
-      border-radius: $micro-cap;
+      @include border-radius($micro-cap);
     }
   }
 }

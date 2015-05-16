@@ -24,10 +24,35 @@
   padding-left: 25px;
 }
 
+.container {
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid #b0d5d5;
+  background-color: #edfefe;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -ms-border-radius: 1px;
+  border-radius: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.container:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+input {
+  border: 1px solid #b0d5d5;
+  padding: 15px;
+  background: #fff;
+  margin: 0 0 10px 0px;
+}
+
 .cap, .sp-replacer.sp-light, .sp-replacer.sp-light:hover {
   width: 45px;
   height: 45px;
   margin: 2.5px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -ms-border-radius: 50px;
   border-radius: 50px;
   background-color: green;
 }
@@ -59,9 +84,15 @@
   background-image: none;
   width: 37.5px;
   height: 37.5px;
+  -moz-border-radius: 37.5px;
+  -webkit-border-radius: 37.5px;
+  -ms-border-radius: 37.5px;
   border-radius: 37.5px;
 }
 .sp-replacer.sp-light .sp-preview .sp-preview-inner, .sp-replacer.sp-light:hover .sp-preview .sp-preview-inner {
+  -moz-border-radius: 37.5px;
+  -webkit-border-radius: 37.5px;
+  -ms-border-radius: 37.5px;
   border-radius: 37.5px;
 }
 

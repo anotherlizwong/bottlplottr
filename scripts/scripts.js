@@ -32,8 +32,31 @@ $(document).ready(function () {
     $(".selectable").selectable({
       filter: ".cap"
     });
+
     return false;
   });
+
+  //handle the events in every element. Only applies to elements which can be handle focus
+  $(document).keydown(function(event) {
+        if ( event.which == 100 || event.wich == 8 || event.which == 46 ) { //this is the keycode. 100 is the 'd' key. The delete key is difficult to bind.
+          resetStyles($(".ui-selected"));
+      }
+    });
+
+   // reset the styles to empty
+  var resetStyles = function(elem) {
+    var regEx = /cap[0-9]+/;
+    $.each(elem, function (index, value) {
+      var el = value;
+      el.removeAttribute("style");
+      var elClassName = el.className.match(regEx);
+      el.className = el.className.replace(regEx, 'empty');
+      el.className = el.className.replace('ui-selected','');
+    });
+    // elem.addClass("empty");
+    return elem.size();
+  }
+
 
   $('#clear_grid').click(function (event) {
     clearGrid();
@@ -57,13 +80,9 @@ $(document).ready(function () {
     deleteColorFromLegend(id);
   });
 
-  //$(document).on("click", ".color_delete", function (event) {
-  //  $(this).closest('form').remove();
-  //});
+addColor();
 
-  addColor();
-
-  generateGridInternal(1, 1, 1, 1);
+generateGridInternal(1, 1, 1, 1);
 
   //addColorToLegend(new Color("test", "5e3a3a", 10, 0));
   //addColorToLegend(new Color("test2", "111111", 10, 1));
@@ -173,15 +192,15 @@ function addColor() {
     console.log(legend[0].count);
   });
 
-  newguy.find(".color_edit").click(function (event) {
-    newguy.find(".color_save").removeClass("hidden");
-    newguy.find(".color_edit").addClass("hidden");
-    newguy.find("[name=name]").attr('readonly', false);
-    newguy.find("[name=hex]").attr('disabled', false);
-    newguy.find("[name=hex]").spectrum({disabled: false});
-    newguy.find("[name=number]").attr('readonly', false);
+newguy.find(".color_edit").click(function (event) {
+  newguy.find(".color_save").removeClass("hidden");
+  newguy.find(".color_edit").addClass("hidden");
+  newguy.find("[name=name]").attr('readonly', false);
+  newguy.find("[name=hex]").attr('disabled', false);
+  newguy.find("[name=hex]").spectrum({disabled: false});
+  newguy.find("[name=number]").attr('readonly', false);
 
-  });
+});
 }
 
 // GRID FUNCTIONS
@@ -239,11 +258,14 @@ function generateGridInternal(height, height_in, width, width_in) {
       cap.appendTo(cell);
       cell.appendTo(row);
       if (i == 0) {
-        width += 52.5;
+        width += 50;
+        if (j %2 == 1) {
+          width += (45/2);
+        }
       }
     }
 
-    height += 50;
+    height += 50.5;
 
     row.appendTo($("#grid"));
   }
@@ -255,3 +277,4 @@ function generateGridInternal(height, height_in, width, width_in) {
   $("#tot_avail").text(count);
   $("#tot_remaining").text(count);
 }
+

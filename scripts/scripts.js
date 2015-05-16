@@ -5,12 +5,40 @@ function bottle_cap(color) {
   };
 }
 
+function color(name, hex, count) {
+  this.color = color;
+  this.hex = hex;
+  this.count = count;
+  this.increment = function() {
+    this.count = this.count + 1;
+  };
+
+  this.decrement = function() {
+    this.count = this.count - 1;
+  }
+}
+
 $(document).ready(function () {
 
   $('#testform').submit(function (event) {
     generateGrid();
   });
+
+  $('#clear_grid').click(function(event) {
+
+  });
 });
+
+function addColor() {
+  var row = '<tr><input type="text" id="name"></tr> \
+   <tr><input type="number" id="hex"></tr> \
+   <tr><input type="number" id="count"</tr>';
+  $('#colorTable > tbody:last').append('<tr>name</tr><tr>hex</tr><tr>count</tr>');
+}
+
+function clearGrid() {
+  $("#grid").empty();
+}
 
 function generateGrid() {
   var _x = parseInt($('#x').val());

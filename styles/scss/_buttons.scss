@@ -1,0 +1,13 @@
+
+button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  color: $text-color;
+  &:hover {
+    color: darken($text-color, 30%);
+    // text-decoration: underline;
+    background-color: darken($base-color, 30%);
+  }
+}

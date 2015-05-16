@@ -36,6 +36,7 @@
   -ms-border-radius: 1px;
   border-radius: 1px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  color: #fff;
 }
 
 .over-wood {
@@ -70,6 +71,18 @@ input[type="number"] {
 
 :-ms-input-placeholder {
   color: #f2f2f2;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  color: #fff;
+}
+button:hover {
+  color: #b3b3b3;
+  background-color: #0b233c;
 }
 
 .cap, .sp-replacer.sp-light, .sp-replacer.sp-light:hover {
@@ -126,6 +139,14 @@ input[type="number"] {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   top: -5px;
 }
+.sp-replacer.sp-light:hover:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-transform: translateY(-5px);
+  -moz-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  -o-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
 
 .selectable .ui-selecting {
   @exends .cap;
@@ -152,6 +173,11 @@ input[type="number"] {
 
 body {
   background-color: #4593e3;
+  font-family: 'Arial';
+}
+
+i {
+  padding: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */

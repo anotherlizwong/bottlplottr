@@ -6,7 +6,7 @@
   background-color: $base-color;
   @include border-radius(1px);
   @include material-shadow(1);
-  // @include material-hover();
+  color: $text-color;
 }
 
 .over-wood {

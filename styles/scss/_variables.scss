@@ -30,6 +30,7 @@ $base-color: $blue-drk;
 $base-color-border: $base-color;//desaturate(darken($base-color, 20%), 60%);
 $placeholder-color: darken($white, 5%);
 $cell-color: transparent;
+$text-color: $white;
 $cap-color: $green-drk; // temp
 $cap-selected-color: #F39814;
 $cap-active-color: #FECA40;

@@ -23,26 +23,26 @@ function Color(name, hex, count, id) {
     this.count = this.count - 1;
   }
 
-  this.toString = function() {
-    return "id["+id+"], name["+name+"], hex["+hex+"], count["+count+"]";
+  this.toString = function () {
+    return "id[" + id + "], name[" + name + "], hex[" + hex + "], count[" + count + "]";
   }
 }
 
 $(document).ready(function () {
 
   $(document).bind("logEvent", function (e, adjustment, myValue) {
-    debugger;
     var x;
     for (x in legend) {
-
       console.log(legend[x].toString());
     }
-
   });
 
-  $('.overall-total').bind('legendUpdated', function (e, adjustment, myValue) {
+  /**
+   * howManyFewerSpots tells us how many spots fewer there are on the board. Pass a negative number to indicate there are more spots
+   */
+  $('.overall-total').bind('legendUpdated', function (e, howManyFewerSpots) {
     var value = $(this).find("#tot_remaining");
-    value.text(parseInt(value.text()) - adjustment);
+    value.text(parseInt(value.text()) - howManyFewerSpots);
   });
 
   $('#testform').submit(function (event) {
@@ -57,31 +57,29 @@ $(document).ready(function () {
   });
 
   //handle the events in every element. Only applies to elements which can be handle focus
-  $(document).keydown(function(event) {
-        if ( event.which == 100 || event.wich == 8 || event.which == 46 ) { //this is the keycode. 100 is the 'd' key. The delete key is difficult to bind.
-          resetStyles($(".ui-selected"));
-      }
-    });
+  $(document).keydown(function (event) {
+    if (event.which == 100 || event.wich == 8 || event.which == 46) { //this is the keycode. 100 is the 'd' key. The delete key is difficult to bind.
+      resetStyles($(".ui-selected"));
+    }
+  });
 
-   // reset the styles to empty
-  var resetStyles = function(elem) {
+  // reset the styles to empty
+  var resetStyles = function (elem) {
 
     var regEx = /cap[0-9]+/;
     $.each(elem, function (index, value) {
-
-      debugger;
       var el = value;
       el.removeAttribute("style");
       var elClassName = el.className.match(regEx);
 
-      if(elClassName) {
+      if (elClassName) {
         var foreignCapId = elClassName[0].substring(3);
         legend[foreignCapId].count = legend[foreignCapId].count + 1;
         $('#form' + foreignCapId).trigger("legendUpdated", foreignCapId);
         $('.overall-total').trigger('legendUpdated', -1);
       }
       el.className = el.className.replace(regEx, 'empty');
-      el.className = el.className.replace('ui-selected','');
+      el.className = el.className.replace('ui-selected', '');
     });
     // elem.addClass("empty");
     return elem.size();
@@ -110,9 +108,9 @@ $(document).ready(function () {
     deleteColorFromLegend(id);
   });
 
-addColor();
+  addColor();
 
-generateGridInternal(1, 1, 1, 1);
+  generateGridInternal(1, 1, 1, 1);
 
   //addColorToLegend(new Color("test", "5e3a3a", 10, 0));
   //addColorToLegend(new Color("test2", "111111", 10, 1));
@@ -145,7 +143,6 @@ function deleteColorFromLegend(id) {
   console.log("removed id " + id + " from dictionary");
 
   $(".cap" + id.val()).css('background-color', '').removeClass("cap" + id.val()).addClass('empty');
-
 
 
 }
@@ -185,7 +182,11 @@ function addColor() {
   });
 
   newguy.find(".color_paint").click(function (event) {
+
     var id = newguy.find("[name=id]").val();
+
+    if(!legend[id]) return;
+
     var hex = legend[id].hex;
 
     var count = $(".ui-selected").length;
@@ -202,18 +203,13 @@ function addColor() {
           classToRemove = o;
           var foreignCapId = o.substring(3);
           legend[foreignCapId].count = legend[foreignCapId].count + 1;
-          $('#form'+foreignCapId).trigger("legendUpdated", foreignCapId);
+          $('#form' + foreignCapId).trigger("legendUpdated", foreignCapId);
           $('.overall-total').trigger('legendUpdated', -1);
         }
       });
 
       $(object).removeClass(classToRemove);
 
-      //// MAKING AN ASSUMPTION THAT THE STYLE IS FIRST. Poor form, i dont' care
-      //var capId = object.classList[0].split('-')[1];
-      //if(capId != undefined) {
-      //  legend[capId].count = legend[capId] + 1;
-      //}
     });
 
 
@@ -229,21 +225,21 @@ function addColor() {
 
     $('.overall-total').trigger('legendUpdated', count);
 
-    $('#form'+id).trigger("legendUpdated", id);
+    $('#form' + id).trigger("legendUpdated", id);
 
     $(document).trigger("logEvent");
 
   });
 
-newguy.find(".color_edit").click(function (event) {
-  newguy.find(".color_save").removeClass("hidden");
-  newguy.find(".color_edit").addClass("hidden");
-  newguy.find("[name=name]").attr('readonly', false);
-  newguy.find("[name=hex]").attr('disabled', false);
-  newguy.find("[name=hex]").spectrum({disabled: false});
-  newguy.find("[name=number]").attr('readonly', false);
+  newguy.find(".color_edit").click(function (event) {
+    newguy.find(".color_save").removeClass("hidden");
+    newguy.find(".color_edit").addClass("hidden");
+    newguy.find("[name=name]").attr('readonly', false);
+    newguy.find("[name=hex]").attr('disabled', false);
+    newguy.find("[name=hex]").spectrum({disabled: false});
+    newguy.find("[name=number]").attr('readonly', false);
 
-});
+  });
 }
 
 // GRID FUNCTIONS
@@ -307,8 +303,8 @@ function generateGridInternal(height, height_in, width, width_in) {
       cell.appendTo(row);
       if (i == 0) {
         width += 50;
-        if (j %2 == 1) {
-          width += (45/2);
+        if (j % 2 == 1) {
+          width += (45 / 2);
         }
       }
     }

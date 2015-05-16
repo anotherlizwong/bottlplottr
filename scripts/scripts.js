@@ -1,32 +1,13 @@
 'use strict';
 
-function bottle_cap(color) {
-  this.color = color;
-  this.describe = function () {
-    return "I'm a bottle cap of color " + this.color;
-  };
-}
+var CAP_GAP = .05;
+var CAP_SIZE = 1.20;
 
-var COLOR_ID_SEQ = 0;
-
-function Color(name, hex, count, id) {
-  this.name = name;
-  this.hex = hex;
-  this.count = count;
-  this.id = id;
-
-  this.increment = function () {
-    this.count = this.count + 1;
-  };
-
-  this.decrement = function () {
-    this.count = this.count - 1;
-  }
-
-  this.toString = function () {
-    return "id[" + id + "], name[" + name + "], hex[" + hex + "], count[" + count + "]";
-  }
-}
+/**
+ * Variable holds a key and map to a Color object
+ * @type {{}}
+ */
+var legend = {}
 
 $(document).ready(function () {
 
@@ -48,7 +29,6 @@ $(document).ready(function () {
   $('#testform').submit(function (event) {
     clearGrid();
     generateGrid();
-    // clearInput();
     $(".selectable").selectable({
       filter: ".cap"
     });
@@ -109,7 +89,7 @@ $(document).ready(function () {
 
   addColor();
 
-  generateGridInternal(1, 1, 1, 1);
+  generateGridInternal(0, 2, 0, 12);
 
   //addColorToLegend(new Color("test", "5e3a3a", 10, 0));
   //addColorToLegend(new Color("test2", "111111", 10, 1));
@@ -119,7 +99,14 @@ $(document).ready(function () {
   });
 });
 
-var legend = {}
+function bottle_cap(color) {
+  this.color = color;
+  this.describe = function () {
+    return "I'm a bottle cap of color " + this.color;
+  };
+}
+
+
 
 function addColorToLegend(color) {
 
@@ -135,7 +122,9 @@ function deleteColorFromLegend(id) {
 
   // remove the caps from the board;
 
-  $('.overall-total').trigger('legendUpdated', -legend[id.val()].count);
+  if(legend[id.val()]) {
+    $('.overall-total').trigger('legendUpdated', -legend[id.val()].count);
+  }
 
   delete legend[id.val()];
 
@@ -148,31 +137,31 @@ function deleteColorFromLegend(id) {
 
 
 function addColor() {
-  var colorId = COLOR_ID_SEQ++;
-  var newguy = $('.color_input').clone();
-  newguy.removeClass("hidden");
-  newguy.removeClass("color_input");
-  newguy.attr('id', 'form' + colorId);
-  newguy.find("[name=hex]").spectrum();
-  newguy.find(".color_edit").addClass("hidden");
-  newguy.find("[name=id]").val(colorId);
-  newguy.appendTo($('#legend'));
+  var colorId = getNextColorSeqId();
+  var newLegendEntry = $('.color_input').clone();
+  newLegendEntry.removeClass("hidden");
+  newLegendEntry.removeClass("color_input");
+  newLegendEntry.attr('id', 'form' + colorId);
+  newLegendEntry.find("[name=hex]").spectrum();
+  newLegendEntry.find(".color_edit").addClass("hidden");
+  newLegendEntry.find("[name=id]").val(colorId);
+  newLegendEntry.appendTo($('#legend'));
 
-  newguy.bind("legendUpdated", function (e, myName, myValue) {
+  newLegendEntry.bind("legendUpdated", function (e, myName, myValue) {
     $(this).find("[name=number]").val(legend[myName].count)
   });
 
-  newguy.submit(function (event) {
-    newguy.find(".color_save").addClass("hidden");
-    newguy.find(".color_edit").removeClass("hidden");
-    newguy.find("[name=name]").attr('readonly', true);
-    newguy.find("[name=number]").attr('readonly', true);
-    newguy.find("[name=hex]").spectrum({disabled: true});
+  newLegendEntry.submit(function (event) {
+    newLegendEntry.find(".color_save").addClass("hidden");
+    newLegendEntry.find(".color_edit").removeClass("hidden");
+    newLegendEntry.find("[name=name]").attr('readonly', true);
+    newLegendEntry.find("[name=number]").attr('readonly', true);
+    newLegendEntry.find("[name=hex]").spectrum({disabled: true});
 
-    var name = newguy.find("[name=name]").val();
-    var count = parseInt(newguy.find("[name=number]").val());
-    var hex = newguy.find("[name=hex]").spectrum("get").toHex();
-    var id = newguy.find("[name=id]").val();
+    var name = newLegendEntry.find("[name=name]").val();
+    var count = parseInt(newLegendEntry.find("[name=number]").val());
+    var hex = newLegendEntry.find("[name=hex]").spectrum("get").toHex();
+    var id = newLegendEntry.find("[name=id]").val();
     var color = new Color(name, hex, count, id);
 
     addColorToLegend(color);
@@ -180,9 +169,9 @@ function addColor() {
     return false;
   });
 
-  newguy.find(".color_paint").click(function (event) {
+  newLegendEntry.find(".color_paint").click(function (event) {
 
-    var id = newguy.find("[name=id]").val();
+    var id = newLegendEntry.find("[name=id]").val();
 
     if(!legend[id]) return;
 
@@ -230,13 +219,13 @@ function addColor() {
 
   });
 
-  newguy.find(".color_edit").click(function (event) {
-    newguy.find(".color_save").removeClass("hidden");
-    newguy.find(".color_edit").addClass("hidden");
-    newguy.find("[name=name]").attr('readonly', false);
-    newguy.find("[name=hex]").attr('disabled', false);
-    newguy.find("[name=hex]").spectrum({disabled: false});
-    newguy.find("[name=number]").attr('readonly', false);
+  newLegendEntry.find(".color_edit").click(function (event) {
+    newLegendEntry.find(".color_save").removeClass("hidden");
+    newLegendEntry.find(".color_edit").addClass("hidden");
+    newLegendEntry.find("[name=name]").attr('readonly', false);
+    newLegendEntry.find("[name=hex]").attr('disabled', false);
+    newLegendEntry.find("[name=hex]").spectrum({disabled: false});
+    newLegendEntry.find("[name=number]").attr('readonly', false);
 
   });
 }
@@ -247,13 +236,7 @@ function clearGrid() {
   $("#grid").empty();
 }
 
-function clearInput() {
-  $('#testform')[0].reset();
-}
 
-var CAP_PERIMITER = 1.38;
-var CAP_SIZE = 1.15;
-var CAP_GAP = 0.23;
 
 function generateGrid() {
   var height = parseInt($('#y_ft').val()); // height
@@ -275,24 +258,34 @@ function returnLegendCapsBack() {
 }
 
 function generateGridInternal(height, height_in, width, width_in) {
+
+  console.log('generating grid');
+
+  var grid = $("#grid");
+
   var tot_height_in = height * 12 + height_in;
   var tot_width_in = width * 12 + width_in;
-  console.log(tot_height_in + "inches");
-  console.log(tot_width_in + "inches");
 
-  var _y = Math.floor((tot_height_in) / CAP_PERIMITER);
-  var _x = Math.floor((tot_width_in - CAP_GAP) / CAP_PERIMITER);
+
+  // get the approximate amount of caps that should fit in the width
+  //  of the given distance
+  var _y = tot_height_in <= 1 ? 1 : Math.floor(tot_height_in / (CAP_SIZE + CAP_GAP) );
+  var _x = tot_width_in <= 1 ? 1 :  Math.floor(tot_width_in / (CAP_SIZE + CAP_GAP) );
+
+  console.log(_y + " = " + tot_height_in + "/" + CAP_SIZE);
+  console.log(_x + " = " + tot_width_in + "/" + CAP_SIZE);
 
   returnLegendCapsBack();
 
+  // Keep track how many caps are available maxiumum
   var count = 0;
-  var width = 0;
-  var height = 0;
-  for (var i = 0; i <= _y; i++) {
+
+  for (var i = 0; i < _y; i++) {
 
     var row = $('<div />').addClass('row');
 
-    for (var j = 0; j <= _x; j++) {
+    for (var j = 0; j < _x; j++) {
+
       if (j != _x || i % 2 == 0) {
         var cap = $('<div />').addClass('cap').addClass('ui-widget-content').addClass("empty");
         var cell = $('<div />').addClass('cell').attr('id', 'div' + i + '-' + j);
@@ -303,21 +296,19 @@ function generateGridInternal(height, height_in, width, width_in) {
       }
     }
 
-    row.appendTo($("#grid"));
-  }
-  height = convertInToPx(tot_height_in);
-  width = convertInToPx(tot_width_in);
+    row.appendTo(grid);
+    row.css('width', (tot_width_in *50));
 
-  $("#grid").css("width", width);
-  $("#grid").css("height", height);
+  }
+
+  console.log(count);
+
+  var grid_height = parseFloat(49*tot_height_in/CAP_SIZE) + 25;
+  var grid_width = parseFloat(49*tot_width_in/CAP_SIZE) + 25;
+
+  grid.css("width", grid_width);
+  grid.css("height", grid_height);
 
   $("#tot_avail").text(count);
   $("#tot_remaining").text(count);
 };
-
-var convertInToPx = function (inches) {
-  var width = $('.cap').width();
-  return parseFloat(width*inches/CAP_SIZE);
-};
-
-

@@ -7,10 +7,14 @@ function bottle_cap(color) {
   };
 }
 
-function color(name, hex, count) {
+var COLOR_ID_SEQ = 0;
+
+function Color(name, hex, count, id) {
   this.name = name;
   this.hex = hex;
   this.count = count;
+  this.id = id;
+
   this.increment = function () {
     this.count = this.count + 1;
   };
@@ -18,6 +22,8 @@ function color(name, hex, count) {
   this.decrement = function () {
     this.count = this.count - 1;
   }
+
+
 }
 
 $(document).ready(function () {
@@ -45,7 +51,9 @@ $(document).ready(function () {
   });
 
   $(document).on("click", ".color_delete", function (event) {
+    var id = $(this).closest('form').find('[name=id]');
     $(this).closest('form').remove();
+    deleteColorFromLegend(id);
   });
 
   $(document).on("click", ".color_delete", function (event) {
@@ -56,18 +64,46 @@ $(document).ready(function () {
 
 });
 
+var legend = {}
+
+function addColorToLegend(color) {
+
+  legend[color.id] = color;
+
+  console.log("added " + color.name + " to dictionary");
+}
+
+function deleteColorFromLegend(id) {
+
+  delete legend[id.val()];
+
+  console.log("removed id " + id + " from dictionary");
+
+}
+
 function addColor() {
   var newguy = $('.color_input').clone();
   newguy.removeClass("hidden");
   newguy.removeClass("color_input");
   newguy.find("[name=hex]").spectrum();
   newguy.find(".color_edit").addClass("hidden");
+  newguy.find("[name=id]").val(COLOR_ID_SEQ++);
   newguy.appendTo($('#legend'));
 
   newguy.submit(function (event) {
     newguy.find(".color_save").addClass("hidden");
     newguy.find(".color_edit").removeClass("hidden");
-    newguy.find("[name=name]").prop('readonly', true).addClass("foobar");
+    newguy.find("[name=name]").attr('readonly', true).addClass("foobar");
+
+    var name = newguy.find("[name=name]").val();
+    var count = parseInt(newguy.find("[name=number]").val());
+    var hex = newguy.find("[name=hex]").spectrum("get").toHex();
+    var id = newguy.find("[name=id]").val();
+    debugger;
+    var color = new Color(name,hex,count, id);
+
+    addColorToLegend(color);
+
     return false;
   });
 
@@ -75,7 +111,7 @@ function addColor() {
     debugger;
     newguy.find(".color_save").removeClass("hidden");
     newguy.find(".color_edit").addClass("hidden");
-    newguy.find("[name=name]").removeProp('readonly').removeClass("foobar");
+    newguy.find("[name=name]").attr('readonly', false).removeClass("foobar");
   });
 }
 

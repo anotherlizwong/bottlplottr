@@ -217,6 +217,63 @@ button:hover {
   transition-duration: 0.2s;
 }
 
+.cap.summit, .summit.sp-replacer.sp-light {
+  background: url("../../assets/caps/summit-bohemian.png");
+  background-size: contain;
+}
+.cap.traveler, .traveler.sp-replacer.sp-light {
+  background: url("../../assets/caps/traveler.png");
+  background-size: contain;
+}
+.cap.smithwicks, .smithwicks.sp-replacer.sp-light {
+  background: url("../../assets/caps/smithwicks.png");
+  background-size: contain;
+}
+.cap.shipyard-anniversary, .shipyard-anniversary.sp-replacer.sp-light {
+  background: url("../../assets/caps/shipyard-anniversary.png");
+  background-size: contain;
+}
+.cap.corona-extra, .corona-extra.sp-replacer.sp-light {
+  background: url("../../assets/caps/corona-extra.png");
+  background-size: contain;
+}
+.cap.kona-yellow, .kona-yellow.sp-replacer.sp-light {
+  background: url("../../assets/caps/kona-yellow.png");
+  background-size: contain;
+}
+.cap.batch19, .batch19.sp-replacer.sp-light {
+  background: url("../../assets/caps/batch19.png");
+  background-size: contain;
+}
+.cap.newportstorm, .newportstorm.sp-replacer.sp-light {
+  background: url("../../assets/caps/newportstorm.png");
+  background-size: contain;
+}
+.cap.oldeenglish800, .oldeenglish800.sp-replacer.sp-light {
+  background: url("../../assets/caps/oldeenglish800.png");
+  background-size: contain;
+}
+.cap.zywiec, .zywiec.sp-replacer.sp-light {
+  background: url("../../assets/caps/zywiec.png");
+  background-size: contain;
+}
+.cap.smirnoff-red, .smirnoff-red.sp-replacer.sp-light {
+  background: url("../../assets/caps/smirnoff-red.png");
+  background-size: contain;
+}
+.cap.smirnoff-blue, .smirnoff-blue.sp-replacer.sp-light {
+  background: url("../../assets/caps/smirnoff-blue.png");
+  background-size: contain;
+}
+.cap.smirnoff-burgandy, .smirnoff-burgandy.sp-replacer.sp-light {
+  background: url("../../assets/caps/smirnoff-burgandy.png");
+  background-size: contain;
+}
+.cap.samadams, .samadams.sp-replacer.sp-light {
+  background: url("../../assets/caps/samadams.png");
+  background-size: contain;
+}
+
 .selectable .ui-selecting {
   @exends .cap;
   background: #FECA40 !important;

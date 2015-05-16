@@ -52,3 +52,10 @@
   -moz-transition-duration: $length + s;
   transition-duration: $length + s;
 }
+
+// zoinked from: http://stackoverflow.com/questions/17854975/sass-background-mixins-using-url
+@mixin bg-image($name) {
+  $url:"../../assets/caps/#{$name}.png";
+  background: url($url);
+  background-size: contain;
+}

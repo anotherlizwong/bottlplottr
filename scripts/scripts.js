@@ -30,7 +30,7 @@ $(document).ready(function () {
     clearGrid();
     generateGrid();
     // clearInput();
-    $("#grid").selectable({
+    $(".selectable").selectable({
       filter: ".cap"
     });
     return false;
@@ -64,7 +64,7 @@ $(document).ready(function () {
 
   addColorToLegend(new Color("test", "5e3a3a", 10, 0));
 
-  $("#grid").selectable({
+  $(".selectable").selectable({
     filter: ".cap"
   });
 });

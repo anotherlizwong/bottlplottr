@@ -6,6 +6,9 @@
     opacity: .9;
   }
 }
+.selectable {
+  padding: 10em;
+}
 
 .selectable  .ui-selected {
   background: $cap-selected-color!important;

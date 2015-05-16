@@ -177,6 +177,10 @@ button:hover {
   opacity: .9;
 }
 
+.selectable {
+  padding: 10em;
+}
+
 .selectable .ui-selected {
   background: #F39814 !important;
   color: #fff;

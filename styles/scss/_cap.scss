@@ -5,13 +5,13 @@
   @include border-radius($cap-diameter);
   background-color: $cap-color;
   // border: 10px dotted white;
-}
-.empty > .cap {
-  background-color: $white;
-  opacity: .15;
-  border: 1px dashed $gray-light;
-  &:hover {
-    opacity: .4;
+  &.empty {
+    background-color: $white;
+    opacity: .15;
+    border: 1px dashed $gray-light;
+    &:hover {
+      opacity: .4;
+    }
   }
 }
 
@@ -43,5 +43,6 @@ $micro-cap: $cap-diameter*.75;
 }
 .sp-replacer.sp-light:hover {
   @include material-shadow(4);
+  @include material-hover(2);
   top: -5px;
 }

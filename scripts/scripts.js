@@ -7,14 +7,10 @@ function bottle_cap(color) {
   };
 }
 
-var COLOR_ID_SEQ = 0;
-
-function Color(name, hex, count, id) {
+function color(name, hex, count) {
   this.name = name;
   this.hex = hex;
   this.count = count;
-  this.id = id;
-
   this.increment = function () {
     this.count = this.count + 1;
   };
@@ -49,9 +45,7 @@ $(document).ready(function () {
   });
 
   $(document).on("click", ".color_delete", function (event) {
-    var id = $(this).closest('form').find('[name=id]');
     $(this).closest('form').remove();
-    deleteColorFromLegend(id);
   });
 
   $(document).on("click", ".color_delete", function (event) {
@@ -62,62 +56,26 @@ $(document).ready(function () {
 
 });
 
-var legend = {}
-
-function addColorToLegend(color) {
-
-  legend[color.id] = color;
-
-  console.log("saved " + color.id + " to dictionary");
-}
-
-function deleteColorFromLegend(id) {
-
-  delete legend[id.val()];
-
-  console.log("removed id " + id + " from dictionary");
-
-}
-
 function addColor() {
   var newguy = $('.color_input').clone();
   newguy.removeClass("hidden");
   newguy.removeClass("color_input");
   newguy.find("[name=hex]").spectrum();
   newguy.find(".color_edit").addClass("hidden");
-  newguy.find("[name=id]").val(COLOR_ID_SEQ++);
   newguy.appendTo($('#legend'));
 
   newguy.submit(function (event) {
     newguy.find(".color_save").addClass("hidden");
     newguy.find(".color_edit").removeClass("hidden");
-    newguy.find("[name=name]").attr('readonly', true).addClass("foobar");
-    newguy.find("[name=number]").attr('readonly', true).addClass("foobar")
-    newguy.find("[name=hex]").spectrum({disabled: true});
-
-    var name = newguy.find("[name=name]").val();
-    var count = parseInt(newguy.find("[name=number]").val());
-    var hex = newguy.find("[name=hex]").spectrum("get").toHex();
-    var id = newguy.find("[name=id]").val();
-    var color = new Color(name,hex,count, id);
-
-    addColorToLegend(color);
-
+    newguy.find("[name=name]").prop('readonly', true).addClass("foobar");
     return false;
   });
 
-  newguy.find(".color_paint").click(function(event){
-
-  });
-
   newguy.find(".color_edit").click(function(event) {
+    debugger;
     newguy.find(".color_save").removeClass("hidden");
     newguy.find(".color_edit").addClass("hidden");
-    newguy.find("[name=name]").attr('readonly', false).removeClass("foobar");
-    newguy.find("[name=hex]").attr('disabled', false);
-    newguy.find("[name=hex]").spectrum({disabled: false});
-    newguy.find("[name=number]").attr('readonly', false).removeClass("foobar");
-
+    newguy.find("[name=name]").removeProp('readonly').removeClass("foobar");
   });
 }
 

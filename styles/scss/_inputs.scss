@@ -6,7 +6,7 @@
   background-color: $base-color;
   @include border-radius(1px);
   @include material-shadow(1);
-  // @include material-hover();
+  color: $text-color;
 }
 
 .over-wood {
@@ -19,13 +19,14 @@ input {
   background: rgba(255,255,255, .5);
   margin: 0 0 10px 0px;
   color: $black;
+  font-size: 1.2em;
 }
 input:not([type=submit]):not([type=file]) {
   // intentionally blank
 }
 
 input[type="number"] {
-  width: 55px;
+  width: 80px;
 }
 
 ::-webkit-input-placeholder {
@@ -39,4 +40,10 @@ input[type="number"] {
 }
 :-ms-input-placeholder {
    color: $placeholder-color;
+}
+
+input:read-only {
+  background:transparent;
+  color: $text-color;
+  font-size: 1.2em;
 }

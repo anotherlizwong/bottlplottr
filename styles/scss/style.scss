@@ -1,6 +1,7 @@
 @import "../bourbon/bourbon";
 @import "variables", "mixins", "grid";
 @import "inputs";
+@import "buttons";
 @import "cap";
 @import "selectable";
 
@@ -10,4 +11,9 @@
 
 body {
   background-color: $background-color;
+  font-family: 'Arial';
+}
+
+i {
+  padding: 5px;
 }

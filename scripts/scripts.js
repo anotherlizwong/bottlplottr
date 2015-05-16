@@ -108,6 +108,18 @@ $(document).ready(function () {
   // }).error(function(){
   //   console.log('error');
   // });
+  $('.auto-complete-name').autocomplete({
+    minLength: 1,
+    source: function(req, add) {
+        var suggestions = capData;
+        add(suggestions);
+      },
+      select: function(e, ui) {
+        console.log(ui.cap.batch19);
+      }
+  });
+
+});
 
 function bottle_cap(color) {
   this.color = color;
@@ -322,4 +334,3 @@ function generateGridInternal(height, height_in, width, width_in) {
   $("#tot_avail").text(count);
   $("#tot_remaining").text(count);
 };
-});

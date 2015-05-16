@@ -10,4 +10,5 @@ button {
     // text-decoration: underline;
     background-color: darken($base-color, 30%);
   }
+  @include transition();
 }

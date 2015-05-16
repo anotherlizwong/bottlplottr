@@ -46,3 +46,8 @@ $micro-cap: $cap-diameter*.75;
   @include material-hover(2);
   top: -5px;
 }
+// .sp-replacer.sp-light.sp-disabled:hover {
+//   @include material-shadow(2);
+//   @include material-hover(0);
+//   top: 0px;
+// }

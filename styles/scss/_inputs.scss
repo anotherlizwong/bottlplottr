@@ -20,6 +20,10 @@ input {
   margin: 0 0 10px 0px;
   color: $black;
   font-size: 1.2em;
+  &:focus {
+    background: rgba(255,255,255, .7);
+    @include transition();
+  }
 }
 input:not([type=submit]):not([type=file]) {
   // intentionally blank
@@ -30,16 +34,16 @@ input[type="number"] {
 }
 
 ::-webkit-input-placeholder {
-   color: $placeholder-color;
+ color: $placeholder-color;
 }
 :-moz-placeholder { /* Firefox 18- */
-   color: $placeholder-color;
+ color: $placeholder-color;
 }
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: $placeholder-color;
+ color: $placeholder-color;
 }
 :-ms-input-placeholder {
-   color: $placeholder-color;
+ color: $placeholder-color;
 }
 
 input:read-only {

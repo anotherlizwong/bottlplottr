@@ -98,8 +98,8 @@ function addColor() {
   newguy.submit(function (event) {
     newguy.find(".color_save").addClass("hidden");
     newguy.find(".color_edit").removeClass("hidden");
-    newguy.find("[name=name]").attr('readonly', true).addClass("foobar");
-    newguy.find("[name=number]").attr('readonly', true).addClass("foobar")
+    newguy.find("[name=name]").attr('readonly', true);
+    newguy.find("[name=number]").attr('readonly', true);
     newguy.find("[name=hex]").spectrum({disabled: true});
 
     var name = newguy.find("[name=name]").val();
@@ -164,6 +164,11 @@ function generateGrid() {
   var height_in = parseInt($('#y_in').val()); // height
   var width = parseInt($('#x_ft').val()); // width
   var width_in = parseInt($('#x_in').val()); // width
+  height = height? height:0;
+  height_in = height_in? height_in:0;
+  width = width? width:0;
+  width_in = width_in? width_in:0;
+
 
   generateGridInternal(height, height_in, width, width_in);
 

@@ -105,6 +105,8 @@ input:read-only {
   font-size: 1.2em;
 }
 
+// toggle hack, highly recommend re-tooling this
+// for any future builds
 .toggled {
   & .auto-complete-name,
   & [name="name"],
@@ -114,7 +116,10 @@ input:read-only {
   & .delete,
   & .text-field,
   & .number-field,
-  & #add_legend {
+  & #add_legend,
+  & input:not([readonly]),
+  & .sp-replacer:not(.sp-disabled),
+  & .sp-replacer:not(.sp-disabled) + [name="id"] + .save + .edit + .color_paint {
     display: none;
   }
   & .toggle {
@@ -124,6 +129,4 @@ input:read-only {
   z-index: 10;
   top: 15em;
   left: 1em;
-  // width: 200px;
-  // height: 100px;
 }

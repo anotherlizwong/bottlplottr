@@ -162,7 +162,7 @@ input:read-only {
   top: 15em;
   left: 1em;
 }
-.toggled .auto-complete-name, .toggled [name="name"], .toggled [name="number"], .toggled .save, .toggled .edit, .toggled .delete, .toggled .text-field, .toggled .number-field, .toggled #add_legend {
+.toggled .auto-complete-name, .toggled [name="name"], .toggled [name="number"], .toggled .save, .toggled .edit, .toggled .delete, .toggled .text-field, .toggled .number-field, .toggled #add_legend, .toggled input:not([readonly]), .toggled .sp-replacer:not(.sp-disabled), .toggled .sp-replacer:not(.sp-disabled) + [name="id"] + .save + .edit + .color_paint {
   display: none;
 }
 .toggled .toggle {

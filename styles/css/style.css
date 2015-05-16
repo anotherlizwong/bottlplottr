@@ -4,14 +4,17 @@
   border-radius: 150px;
   background-color: green;
 }
-.cap.empty {
+
+.empty > .cap {
   background-color: transparent;
-  border: 1px solid #999;
+  border: 4px dashed #999;
 }
 
 #grid {
   border: 1px solid #000;
-  background: #fff url("../../assets/woodtexture7.jpg") repeat right top;
+  background: #fff url("../../assets/woodtexture7.jpg") repeat left top;
+  padding: 15px;
+  overflow: auto;
 }
 #grid .cell {
   background-color: transparent;

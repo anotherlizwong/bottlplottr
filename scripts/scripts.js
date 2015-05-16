@@ -153,8 +153,8 @@ function generateGrid() {
     var row = $('<div />').addClass('row');
 
     for (var j = 0; j < _x; j++) {
-      var cap = $('<div />').addClass('cap').addClass('ui-widget-content');
-      var cell = $('<div />').addClass('cell').addClass("empty").attr('id', 'div' + i + '-' + j);
+      var cap = $('<div />').addClass('cap').addClass('ui-widget-content').addClass("empty");
+      var cell = $('<div />').addClass('cell').attr('id', 'div' + i + '-' + j);
 
       count++;
 

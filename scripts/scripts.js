@@ -1,3 +1,5 @@
+'use strict';
+
 function bottle_cap(color) {
   this.color = color;
   this.describe = function () {
@@ -49,14 +51,14 @@ function clearInput() {
 }
 
 function generateGrid() {
-  var _x = parseInt($('#x').val());
   var _y = parseInt($('#x').val());
+  var _x = parseInt($('#x').val());
 
-  for (var i = 0; i <= _x; i++) {
+  for (var i = 0; i < _y; i++) {
 
     var row = $('<div />').addClass('row');
 
-    for (var j = 0; j < _y; j++) {
+    for (var j = 0; j < _x; j++) {
       var cap = $('<div />').addClass('cap');
       var cell = $('<div />').addClass('cell').attr('id', 'div' + i + '-' + j);
 

@@ -1,25 +1,26 @@
 .cap {
-  display: block;
   width: 135px;
   height: 135px;
   border-radius: 150px;
   background-color: green;
 }
+.cap.empty {
+  background-color: transparent;
+  border: 1px solid #999;
+}
 
 #grid {
-  display: block;
-  border-color: #000;
+  border: 1px solid #000;
+  background: #fff url("../../assets/woodtexture7.jpg") repeat right top;
 }
 #grid .cell {
-  border-color: #666;
-  background-color: #555;
-  display: block;
+  background-color: transparent;
   float: left;
   width: 150px;
   height: 150px;
 }
 #grid .row {
-  border-color: #333;
+  border-color: #999;
   clear: both;
   width: 100%;
 }

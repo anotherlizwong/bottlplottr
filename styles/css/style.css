@@ -1,27 +1,14 @@
-.cap {
-  width: 135px;
-  height: 135px;
-  margin: 7.5px;
-  border-radius: 150px;
-  background-color: green;
-}
-
-.empty > .cap {
-  background-color: transparent;
-  border: 4px dashed #999;
-}
-
 #grid {
   border: 1px solid #000;
   background: #fff url("../../assets/woodtexture7.jpg") repeat left top;
-  padding: 7.5px;
+  padding: 2.5px;
   overflow: auto;
 }
 #grid .cell {
   background-color: transparent;
   float: left;
-  width: 150px;
-  height: 150px;
+  width: 50px;
+  height: 50px;
 }
 #grid .row {
   border-color: #999;
@@ -29,7 +16,71 @@
   width: 100%;
 }
 #grid .row:nth-child(odd) {
-  padding-left: 75px;
+  padding-left: 25px;
+}
+
+.cap, .sp-replacer.sp-light, .sp-replacer.sp-light:hover {
+  width: 45px;
+  height: 45px;
+  margin: 2.5px;
+  border-radius: 50px;
+  background-color: green;
+}
+
+.empty > .cap, .empty > .sp-replacer.sp-light {
+  background-color: transparent;
+  border: 4px dashed #999;
+}
+
+.sp-replacer.sp-light, .sp-replacer.sp-light:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  width: 12.5px;
+  height: 12.5px;
+  padding: inherit;
+  background-color: transparent;
+  border: none;
+}
+.sp-replacer.sp-light.sp-active, .sp-replacer.sp-light:hover.sp-active {
+  border-color: transparent;
+}
+.sp-replacer.sp-light .sp-dd, .sp-replacer.sp-light:hover .sp-dd {
+  display: none;
+}
+.sp-replacer.sp-light .sp-preview, .sp-replacer.sp-light:hover .sp-preview {
+  background-image: none;
+  width: 12.5px;
+  height: 12.5px;
+  border-radius: 12.5px;
+}
+.sp-replacer.sp-light .sp-preview .sp-preview-inner, .sp-replacer.sp-light:hover .sp-preview .sp-preview-inner {
+  border-radius: 12.5px;
+}
+
+.sp-replacer.sp-light:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  top: -5px;
+}
+
+.selectable .ui-selecting {
+  @exends .cap;
+  background: #FECA40;
+}
+
+.selectable .ui-selected {
+  background: #F39814;
+  color: #fff;
+  @extends .cap;
+}
+
+.selectable {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 60%;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 /*# sourceMappingURL=style.css.map */

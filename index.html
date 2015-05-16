@@ -6,25 +6,50 @@
   <script src="scripts/jquery-2.1.4.js"></script>
   <script src="scripts/jquery.event.drag-2.2.js"></script>
   <script src="scripts/jquery.event.drop-2.2.js"></script>
+  <script src="scripts/jquery-ui.js"></script>
   <script src="scripts/spectrum.js"></script>
   <script src="scripts/scripts.js"></script>
   <link rel="stylesheet" type="text/css" href="styles/css/style.css">
   <link rel="stylesheet" type="text/css" href="styles/spectrum.css">
+  <link rel="stylesheet" type="text/css" href="styles/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="styles/jquery-ui.structure.css">
   <style type="text/css">
 
-    .grid-cell {
-      border: solid;
-      color: aqua;
-      padding: 1px;
-      height: 10px;
-      width: 10px;
-    }
-
-    .grid-offset {
-      margin-left: 5px;
-    }
 
   </style>
+
+  <style>
+    .selectable .ui-selecting {
+      background: #FECA40;
+      width: 135px;
+      height: 135px;
+      border-radius: 150px;
+    }
+
+    .selectable  .ui-selected {
+      background: #F39814;
+      color: white;
+      width: 135px;
+      height: 135px;
+      border-radius: 150px;
+    }
+
+    .selectable  {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 60%;
+    }
+
+    /*.selectable  li {*/
+      /*margin: 3px;*/
+      /*padding: 0.4em;*/
+      /*font-size: 1.4em;*/
+      /*height: 18px;*/
+    /*}*/
+
+  </style>
+
 
 </head>
 <body>
@@ -46,7 +71,7 @@
   </form>
   <button id="clear_grid">Clear Grid</button>
 
-  <div id="grid">
+  <div class="selectable" id="grid">
 
 
   </div>

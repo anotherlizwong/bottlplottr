@@ -26,6 +26,9 @@ $(document).ready(function () {
     clearGrid();
     generateGrid();
     clearInput();
+    $("#grid").selectable({
+      filter: ".cap"
+    });
   });
 
   $('#clear_grid').click(function (event) {
@@ -40,19 +43,30 @@ $(document).ready(function () {
 
   });
 
-  $(document).on("click", ".color_delete", function(event){
+  $(document).on("click", ".color_delete", function (event) {
     $(this).closest('div').remove();
   });
 
-  $(document).on("click", ".color_add", function(event){
+  $(document).on("click", ".color_add", function (event) {
     $(this).closest('div').remove();
   });
 
+  $(".selectable").selectable({
+    selected: function (event, ui) {
+      if ($(ui.selected).hasClass('selectedfilter')) {
+        $(ui.selected).removeClass('selectedfilter').removeClass('ui-selected');
+        // do unselected stuff
+      } else {
+        $(ui.selected).addClass('selectedfilter').addClass('ui-selected');
+        // do selected stuff
+      }
+    }
+  });
 
 });
 
 function addColor() {
-  var row =  $('\
+  var row = $('\
     <div> \
     <label for="name">Name</label><input name="name" type="text" required> \
     <label for="hex">Hex</label><input name="hex" type="text" required> \
@@ -77,7 +91,7 @@ function clearInput() {
 }
 
 function generateGrid() {
-  var _y = parseInt($('#x').val());
+  var _y = parseInt($('#y').val());
   var _x = parseInt($('#x').val());
 
   for (var i = 0; i < _y; i++) {
@@ -85,7 +99,7 @@ function generateGrid() {
     var row = $('<div />').addClass('row');
 
     for (var j = 0; j < _x; j++) {
-      var cap = $('<div />').addClass('cap');
+      var cap = $('<div />').addClass('cap').addClass('ui-widget-content');
       var cell = $('<div />').addClass('cell').attr('id', 'div' + i + '-' + j);
 
       cap.appendTo(cell);

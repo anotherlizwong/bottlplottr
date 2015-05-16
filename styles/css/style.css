@@ -28,8 +28,12 @@
 }
 
 .empty > .cap, .empty > .sp-replacer.sp-light {
-  background-color: transparent;
-  border: 4px dashed #999;
+  background-color: #fff;
+  opacity: .15;
+  border: 1px dashed #999;
+}
+.empty > .cap:hover, .empty > .sp-replacer.sp-light:hover {
+  opacity: .4;
 }
 
 .sp-replacer.sp-light, .sp-replacer.sp-light:hover {
@@ -64,12 +68,20 @@
 .selectable .ui-selecting {
   @exends .cap;
   background: #FECA40;
+  opacity: 1;
+}
+.selectable .ui-selecting:hover {
+  opacity: 1;
 }
 
 .selectable .ui-selected {
   background: #F39814;
   color: #fff;
+  opacity: 1;
   @extends .cap;
+}
+.selectable .ui-selected:hover {
+  opacity: 1;
 }
 
 .hidden {

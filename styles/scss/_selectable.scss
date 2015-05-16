@@ -1,10 +1,18 @@
 .selectable .ui-selecting {
   @exends .cap;
   background: $cap-active-color;
+  opacity: 1;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .selectable  .ui-selected {
   background: $cap-selected-color;
   color: $white;
+  opacity: 1;
   @extends .cap;
+  &:hover {
+    opacity: 1;
+  }
 }

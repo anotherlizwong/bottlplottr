@@ -7,8 +7,12 @@
   // border: 10px dotted white;
 }
 .empty > .cap {
-  background-color: $cell-color;
-  border: 4px dashed $gray-light;
+  background-color: $white;
+  opacity: .15;
+  border: 1px dashed $gray-light;
+  &:hover {
+    opacity: .4;
+  }
 }
 
 // override color picker to make it a cap

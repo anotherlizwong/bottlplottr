@@ -104,4 +104,32 @@ $(document).ready(function () {
     filter: ".cap"
   });
 
+  // var capData;
+  // $.getJSON('../assets/caps/caps.json',function(data){
+  //   console.log('success getting caps from json');
+  //   // $.each(data.caps,function(i,cap){
+  //   //   $('ul').append('<li>'+cap.name+' '+cap.filename+'</li>');
+  //   // });
+  //   capData = data;
+  // }).error(function(){
+  //   console.log('error');
+  // });
+  $('.auto-complete-name').autocomplete({
+    minLength: 1,
+    source: function(req, add) {
+      var suggestions = capData;
+      add(suggestions);
+    },
+    select: function(e, ui) {
+      console.log(ui.cap.batch19);
+    }
+  });
+
 });
+
+function bottle_cap(color) {
+  this.color = color;
+  this.describe = function () {
+    return "I'm a bottle cap of color " + this.color;
+  };
+}

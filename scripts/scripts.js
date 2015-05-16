@@ -115,17 +115,28 @@ $(document).ready(function () {
   //   console.log('error');
   // });
   $('.auto-complete-name').autocomplete({
-    minLength: 1,
+    minLength: 0,
     source: function(req, add) {
-      var suggestions = capData;
-      add(suggestions);
-    },
-    select: function(e, ui) {
-      console.log(ui.cap.batch19);
-    }
+        add($.map(capData, function(el) {
+          return {
+            label: el.name,
+            value: el.filename
+          };
+        }));
+      },
+      focus: function(event, ui) {
+        $(this).val(ui.item.label);
+        return false;
+      },
+      select: function(event, ui) {
+        $(this).val(ui.item.label);
+        // $(this)
+        return false;
+      }
   });
 
 });
+
 
 function bottle_cap(color) {
   this.color = color;

@@ -1,10 +1,17 @@
 #grid {
+  display: block;
+  border-color: $black;
+
   .cell {
+    border-color: $gray;
+    background-color: $cell-color;
+    display: block;
     float: left;
     width: $cap-diameter;
     height: $cap-diameter;
   }
   .row {
+    border-color: $gray-light;
     clear: both;
     width: 100%;
   }

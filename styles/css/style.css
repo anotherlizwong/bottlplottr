@@ -3,4 +3,25 @@
   border-radius: 20px;
 }
 
+#grid {
+  display: block;
+  border-color: #000;
+}
+#grid .cell {
+  border-color: #666;
+  background-color: #555;
+  display: block;
+  float: left;
+  width: 20px;
+  height: 20px;
+}
+#grid .row {
+  border-color: #333;
+  clear: both;
+  width: 100%;
+}
+#grid .row:nth-child(odd) {
+  padding-left: 10px;
+}
+
 /*# sourceMappingURL=style.css.map */

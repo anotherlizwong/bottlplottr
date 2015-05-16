@@ -8,8 +8,8 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'styles',
-          src: ['**/*.scss'],
-          dest: 'styles/css',
+          src: ['*.scss'],
+          dest: 'css',
           ext: '.css'
         }]
       }
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
     //     dest: 'build/<%= pkg.name %>.min.js'
     //   }
     // }
-  })
+  });
 
   // Load the plugin that provides the "uglify" task.
   // grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -46,6 +46,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   // Default task(s).
   // grunt.registerTask('uglify', ['uglify']);
-  grunt.registerTask('default', ['watch','sass']);
+  grunt.registerTask('default', ['sass','watch']);
 
 };

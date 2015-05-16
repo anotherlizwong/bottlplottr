@@ -51,33 +51,29 @@ $(document).ready(function () {
     $(this).closest('div').remove();
   });
 
-  $(".selectable").selectable({
-    selected: function (event, ui) {
-      if ($(ui.selected).hasClass('selectedfilter')) {
-        $(ui.selected).removeClass('selectedfilter').removeClass('ui-selected');
-        // do unselected stuff
-      } else {
-        $(ui.selected).addClass('selectedfilter').addClass('ui-selected');
-        // do selected stuff
-      }
-    }
-  });
+
+  //$(".selectable").selectable({
+  //  selected: function (event, ui) {
+  //    if ($(ui.selected).hasClass('selectedfilter')) {
+  //      $(ui.selected).removeClass('selectedfilter').removeClass('ui-selected');
+  //      // do unselected stuff
+  //    } else {
+  //      $(ui.selected).addClass('selectedfilter').addClass('ui-selected');
+  //      // do selected stuff
+  //    }
+  //  }
+  //});
 
 });
 
 function addColor() {
-  var row = $('\
-    <div> \
-    <label for="name">Name</label><input name="name" type="text" required> \
-    <label for="hex">Hex</label><input name="hex" type="text" required> \
-    <label for="count">Count</label> <input name="count" type="number" required>\
-    <input type="hidden"/>\
-    <button class="color_delete" type="button">Delete</button> \
-    </div> ');
 
-  row.find("[name=hex]").spectrum();
-
-  $('#legend').append(row);
+debugger;
+  var newguy = $('.color_input').clone();
+  newguy.removeClass("hidden");
+  newguy.removeClass("color_input");
+  newguy.find("[name=hex]").spectrum();
+  newguy.appendTo($('#legend'));
 }
 
 // GRID FUNCTIONS

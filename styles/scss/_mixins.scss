@@ -17,6 +17,12 @@
 }
 
 @mixin material-hover($level: 1) {
+   @if $level == 0 {
+    &:hover {
+      @include material-shadow(1);
+      @include transform(translateY(0px));
+    }
+  }
   @if $level == 1 {
     &:hover {
       @include material-shadow(2);

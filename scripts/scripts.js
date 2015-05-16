@@ -91,8 +91,8 @@ function addColor() {
   newguy.submit(function (event) {
     newguy.find(".color_save").addClass("hidden");
     newguy.find(".color_edit").removeClass("hidden");
-    newguy.find("[name=name]").attr('readonly', true).addClass("foobar");
-    newguy.find("[name=number]").attr('readonly', true).addClass("foobar")
+    newguy.find("[name=name]").attr('readonly', true);
+    newguy.find("[name=number]").attr('readonly', true);
     newguy.find("[name=hex]").spectrum({disabled: true});
 
     var name = newguy.find("[name=name]").val();

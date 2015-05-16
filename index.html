@@ -21,15 +21,18 @@
 <div id="phil_dont_touch">
 
     <div class="container">
-      <form id="legend" action="#">
-        <div class="color_input hidden">
-          <input type="text" required placeholder="Cap Name">
-          <input type="number" required placeholder="Count">
-          <input name="hex" type="text" required>
-          <input type="hidden"/>
-          <button class="color_delete" type="button"><i class="fa fa-trash-o"></i></button>
-        </div>
-      </form>
+      <div id="legend">
+        <form class="color_input hidden" action="#">
+          <input type="text" name="name" required placeholder="Cap Name">
+          <input type="number" name="number" required placeholder="Count">
+          <input name="hex" type="text" value="black">
+          <input name="id" type="hidden"/>
+          <button class="color_delete" type="button"><i class="fa fa-close"></i></button>
+          <button class="color_save" type="submit"><i class="fa fa-check"></i></button>
+          <button class="color_edit" type="button"><i class="fa fa-edit"></i></button>
+          <button class="color_paint" type="button"><i class="fa fa-paint-brush"></i></button>
+        </form>
+      </div>
       <button id="add_legend"><i class="fa fa-plus-square-o"></i> Row</button>
     </div>
 

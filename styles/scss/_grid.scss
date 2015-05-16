@@ -1,7 +1,7 @@
 #grid {
   width: 40em;
   height: 30em;
-  border: 1px solid $black;
+  border: none;//1px solid $black;
   background: #fff url($grid-background) repeat left top;
   padding: $buffer;
   overflow: auto;
@@ -23,4 +23,5 @@
     padding-left: $cap-diameter/2;
   }
   @include material-shadow(2);
+  // @include material-hover();
 }

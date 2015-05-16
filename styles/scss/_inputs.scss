@@ -2,13 +2,11 @@
   float:left;
   padding: 1em;
   margin: 1em;
-  border: 1px solid $off-white-border;
-  background-color: $off-white;
+  border: 1px solid $base-color-border;
+  background-color: $base-color;
   @include border-radius(1px);
   @include material-shadow(1);
-  &:hover {
-    @include material-shadow(2);
-  }
+  // @include material-hover();
 }
 
 .over-wood {
@@ -16,10 +14,11 @@
 }
 
 input {
-  border: 1px solid $off-white-border;
+  border: 1px solid $base-color-border;
   padding: 15px;
-  background: $white;
+  background: rgba(255,255,255, .5);
   margin: 0 0 10px 0px;
+  color: $black;
 }
 input:not([type=submit]):not([type=file]) {
   // intentionally blank
@@ -27,4 +26,17 @@ input:not([type=submit]):not([type=file]) {
 
 input[type="number"] {
   width: 55px;
+}
+
+::-webkit-input-placeholder {
+   color: $placeholder-color;
+}
+:-moz-placeholder { /* Firefox 18- */
+   color: $placeholder-color;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   color: $placeholder-color;
+}
+:-ms-input-placeholder {
+   color: $placeholder-color;
 }

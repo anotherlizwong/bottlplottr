@@ -15,3 +15,10 @@
   -ms-border-radius: $radius;
   border-radius: $radius;
 }
+
+@mixin material-hover() {
+  &:hover {
+    @include shadow(3);
+    @include transform(translateY(-5px));
+  }
+}

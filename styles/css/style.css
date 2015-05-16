@@ -1,6 +1,9 @@
 .cap {
-  width: 20px;
-  border-radius: 20px;
+  display: block;
+  width: 135px;
+  height: 135px;
+  border-radius: 150px;
+  background-color: green;
 }
 
 #grid {
@@ -12,8 +15,8 @@
   background-color: #555;
   display: block;
   float: left;
-  width: 20px;
-  height: 20px;
+  width: 150px;
+  height: 150px;
 }
 #grid .row {
   border-color: #333;
@@ -21,7 +24,7 @@
   width: 100%;
 }
 #grid .row:nth-child(odd) {
-  padding-left: 10px;
+  padding-left: 75px;
 }
 
 /*# sourceMappingURL=style.css.map */

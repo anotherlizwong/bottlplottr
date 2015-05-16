@@ -35,7 +35,7 @@ $(document).ready(function () {
     var x;
     for (x in legend) {
 
-      console.log(x.toString());
+      console.log(legend[x].toString());
     }
 
   });
@@ -65,11 +65,21 @@ $(document).ready(function () {
 
    // reset the styles to empty
   var resetStyles = function(elem) {
+
     var regEx = /cap[0-9]+/;
     $.each(elem, function (index, value) {
+
+      debugger;
       var el = value;
       el.removeAttribute("style");
       var elClassName = el.className.match(regEx);
+
+      if(elClassName) {
+        var foreignCapId = elClassName[0].substring(3);
+        legend[foreignCapId].count = legend[foreignCapId].count + 1;
+        $('#form' + foreignCapId).trigger("legendUpdated", foreignCapId);
+        $('.overall-total').trigger('legendUpdated', -1);
+      }
       el.className = el.className.replace(regEx, 'empty');
       el.className = el.className.replace('ui-selected','');
     });

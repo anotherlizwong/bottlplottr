@@ -1,3 +1,5 @@
+'use strict';
+
 function bottle_cap(color) {
   this.color = color;
   this.describe = function () {
@@ -50,7 +52,7 @@ function generateGrid() {
   var _x = parseInt($('#x').val());
   var _y = parseInt($('#x').val());
 
-  for (var i = 0; i <= _x; i++) {
+  for (var i = 0; i < _x; i++) {
 
     var row = $('<div />').addClass('row');
 

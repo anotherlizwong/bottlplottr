@@ -3,6 +3,9 @@
   background: #fff url("../../assets/woodtexture7.jpg") repeat left top;
   padding: 2.5px;
   overflow: auto;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1em;
 }
 #grid .cell {
   background-color: transparent;

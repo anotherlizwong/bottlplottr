@@ -51,6 +51,7 @@ $(document).ready(function () {
     $(this).closest('div').remove();
   });
 
+  addColor();
 
 });
 

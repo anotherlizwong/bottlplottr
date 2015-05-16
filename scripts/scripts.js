@@ -85,23 +85,29 @@ function generateGrid() {
   var _x = Math.round((width*12)/CAP_PERIMITER);
 
   var count = 0;
-
+  var width = 0;
   for (var i = 0; i < _y; i++) {
 
     var row = $('<div />').addClass('row');
 
     for (var j = 0; j < _x; j++) {
       var cap = $('<div />').addClass('cap').addClass('ui-widget-content');
-      var cell = $('<div />').addClass('cell').attr('id', 'div' + i + '-' + j);
+      var cell = $('<div />').addClass('cell').addClass("empty").attr('id', 'div' + i + '-' + j);
 
       count++;
 
       cap.appendTo(cell);
       cell.appendTo(row);
+      if(i ==0) {
+        width += 55;
+      }
     }
+
 
     row.appendTo($("#grid"));
   }
+
+  $("#grid").css("width", width);
 
   console.log("There are " + count + " free cap spots");
 }

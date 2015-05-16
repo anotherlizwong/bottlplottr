@@ -1,6 +1,8 @@
 # bottlplottr
 Plot bottle caps on any rectangular surface.
 
+![ScreenShot](/screen-shots/screen-shot.png)
+
 #### Assumed cap size
 The assumed cap size is 1.15" in diameter.
 

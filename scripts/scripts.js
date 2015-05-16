@@ -22,8 +22,28 @@ function Color(name, hex, count, id) {
   this.decrement = function () {
     this.count = this.count - 1;
   }
+
+  this.toString = function() {
+    return "id["+id+"], name["+name+"], hex["+hex+"], count["+count+"]";
+  }
 }
+
 $(document).ready(function () {
+
+  $(document).bind("logEvent", function (e, adjustment, myValue) {
+    debugger;
+    var x;
+    for (x in legend) {
+
+      console.log(x.toString());
+    }
+
+  });
+
+  $('.overall-total').bind('legendUpdated', function (e, adjustment, myValue) {
+    var value = $(this).find("#tot_remaining");
+    value.text(parseInt(value.text()) - adjustment);
+  });
 
   $('#testform').submit(function (event) {
     clearGrid();
@@ -81,7 +101,7 @@ function addColorToLegend(color) {
 
   console.log("saved " + color.id + " to dictionary");
 
-  $(".cap"+color.id).css('background-color', '#' + color.hex);
+  $(".cap" + color.id).css('background-color', '#' + color.hex);
 
 }
 
@@ -89,23 +109,33 @@ function deleteColorFromLegend(id) {
 
   // remove the caps from the board;
 
+  $('.overall-total').trigger('legendUpdated', -legend[id.val()].count);
+
   delete legend[id.val()];
 
   console.log("removed id " + id + " from dictionary");
 
-  $(".cap"+id.val()).css('background-color', '').removeClass("cap"+id.val()).addClass('empty');
+  $(".cap" + id.val()).css('background-color', '').removeClass("cap" + id.val()).addClass('empty');
+
+
 
 }
 
 
 function addColor() {
+  var colorId = COLOR_ID_SEQ++;
   var newguy = $('.color_input').clone();
   newguy.removeClass("hidden");
   newguy.removeClass("color_input");
+  newguy.attr('id', 'form' + colorId);
   newguy.find("[name=hex]").spectrum();
   newguy.find(".color_edit").addClass("hidden");
-  newguy.find("[name=id]").val(COLOR_ID_SEQ++);
+  newguy.find("[name=id]").val(colorId);
   newguy.appendTo($('#legend'));
+
+  newguy.bind("legendUpdated", function (e, myName, myValue) {
+    $(this).find("[name=number]").val(legend[myName].count)
+  });
 
   newguy.submit(function (event) {
     newguy.find(".color_save").addClass("hidden");
@@ -125,11 +155,6 @@ function addColor() {
     return false;
   });
 
-  // when deleted, it must delete.
-  // when save is done, repaint automatically.
-  // make sure count is still valid for all parties included.
-
-
   newguy.find(".color_paint").click(function (event) {
     var id = newguy.find("[name=id]").val();
     var hex = legend[id].hex;
@@ -139,15 +164,17 @@ function addColor() {
     // add the color of the current cap
     $(".ui-selected").css('background-color', '#' + hex);
 
-    console.log(legend[0].count);
     // go throug the current caps and return their tokens
     $(".ui-selected").each(function (i, object) {
 
       var classToRemove;
-      $(object.classList).each(function(j, o){
+      $(object.classList).each(function (j, o) {
         if (o.indexOf("cap") > -1 && o.length > 3) {
           classToRemove = o;
-          legend[o.substring(3)].count = legend[o.substring(3)].count + 1;
+          var foreignCapId = o.substring(3);
+          legend[foreignCapId].count = legend[foreignCapId].count + 1;
+          $('#form'+foreignCapId).trigger("legendUpdated", foreignCapId);
+          $('.overall-total').trigger('legendUpdated', -1);
         }
       });
 
@@ -170,7 +197,13 @@ function addColor() {
 
     // update the pointers;
     legend[id].count = legend[id].count - count;
-    console.log(legend[0].count);
+
+    $('.overall-total').trigger('legendUpdated', count);
+
+    $('#form'+id).trigger("legendUpdated", id);
+
+    $(document).trigger("logEvent");
+
   });
 
   newguy.find(".color_edit").click(function (event) {
@@ -211,14 +244,19 @@ function generateGrid() {
 
 }
 
+// When the reset table button is clicked, return the caps on the board to their proper place in the legend
+function returnLegendCapsBack() {
+  //todo
+}
+
 function generateGridInternal(height, height_in, width, width_in) {
+
+  returnLegendCapsBack();
+
   //var height = parseInt($('#y_ft').val()); // height
   //var height_in = parseInt($('#y_in').val()); // height
   //var width = parseInt($('#x_ft').val()); // width
   //var width_in = parseInt($('#x_in').val()); // width
-
-  console.log(height * 12 + height_in + "inches");
-  console.log(width * 12 + width_in + "inches");
 
   var _y = Math.round((height * 12 + height_in) / CAP_PERIMITER);
   var _x = Math.round((width * 12 + width_in) / CAP_PERIMITER);
@@ -251,7 +289,7 @@ function generateGridInternal(height, height_in, width, width_in) {
   $("#grid").css("width", width);
   $("#grid").css("height", height);
 
-  console.log("There are " + count + " free cap spots");
   $("#tot_avail").text(count);
   $("#tot_remaining").text(count);
 }
+

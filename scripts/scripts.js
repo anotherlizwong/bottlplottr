@@ -219,4 +219,6 @@ function generateGridInternal(height, height_in, width, width_in) {
   $("#grid").css("height", height);
 
   console.log("There are " + count + " free cap spots");
+  $("#tot_avail").text(count);
+  $("#tot_remaining").text(count);
 }

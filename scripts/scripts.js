@@ -74,7 +74,7 @@ $(document).ready(function () {
   })
 
   $('#add_legend').click(function (event) {
-    addColor();
+    addLegendEntry();
   });
 
   $('#save_legend').click(function (event) {
@@ -87,7 +87,7 @@ $(document).ready(function () {
     deleteColorFromLegend(id);
   });
 
-  addColor();
+  addLegendEntry();
 
   generateGridInternal(0, 2, 0, 12);
 
@@ -122,46 +122,53 @@ function deleteColorFromLegend(id) {
 
   // remove the caps from the board;
 
-  if(legend[id.val()]) {
-    $('.overall-total').trigger('legendUpdated', -legend[id.val()].count);
-  }
-
-  delete legend[id.val()];
+  //if(legend[id.val()]) {
+  //  $('.overall-total').trigger('legendUpdated', -legend[id.val()].count);
+  //}
 
   console.log("removed id " + id + " from dictionary");
 
-  $(".cap" + id.val()).css('background-color', '').removeClass("cap" + id.val()).addClass('empty');
+  var caps = $(".cap" + id.val());
 
+  if(legend[id.val()]) {
+    $('.overall-total').trigger('legendUpdated', - caps.size());
+    delete legend[id.val()];
+  }
+
+  caps.css('background-color', '').removeClass("cap" + id.val()).addClass('empty');
 
 }
 
+function toggleEnabledLegendEntry(legendEntry) {
+  
+}
 
-function addColor() {
+function addLegendEntry() {
   var colorId = getNextColorSeqId();
-  var newLegendEntry = $('.color_input').clone();
-  newLegendEntry.removeClass("hidden");
-  newLegendEntry.removeClass("color_input");
-  newLegendEntry.attr('id', 'form' + colorId);
-  newLegendEntry.find("[name=hex]").spectrum();
-  newLegendEntry.find(".color_edit").addClass("hidden");
-  newLegendEntry.find("[name=id]").val(colorId);
-  newLegendEntry.appendTo($('#legend'));
+  var legendEntry = $('.color_input').clone();
+  legendEntry.removeClass("hidden");
+  legendEntry.removeClass("color_input");
+  legendEntry.attr('id', 'form' + colorId);
+  legendEntry.find("[name=hex]").spectrum();
+  legendEntry.find(".color_edit").addClass("hidden");
+  legendEntry.find("[name=id]").val(colorId);
+  legendEntry.appendTo($('#legend'));
 
-  newLegendEntry.bind("legendUpdated", function (e, myName, myValue) {
+  legendEntry.bind("legendUpdated", function (e, myName, myValue) {
     $(this).find("[name=number]").val(legend[myName].count)
   });
 
-  newLegendEntry.submit(function (event) {
-    newLegendEntry.find(".color_save").addClass("hidden");
-    newLegendEntry.find(".color_edit").removeClass("hidden");
-    newLegendEntry.find("[name=name]").attr('readonly', true);
-    newLegendEntry.find("[name=number]").attr('readonly', true);
-    newLegendEntry.find("[name=hex]").spectrum({disabled: true});
+  legendEntry.submit(function (event) {
+    legendEntry.find("save").addClass("hidden");
+    legendEntry.find(".color_edit").removeClass("hidden");
+    legendEntry.find("[name=name]").attr('readonly', true);
+    legendEntry.find("[name=number]").attr('readonly', true);
+    legendEntry.find("[name=hex]").spectrum({disabled: true});
 
-    var name = newLegendEntry.find("[name=name]").val();
-    var count = parseInt(newLegendEntry.find("[name=number]").val());
-    var hex = newLegendEntry.find("[name=hex]").spectrum("get").toHex();
-    var id = newLegendEntry.find("[name=id]").val();
+    var name = legendEntry.find("[name=name]").val();
+    var count = parseInt(legendEntry.find("[name=number]").val());
+    var hex = legendEntry.find("[name=hex]").spectrum("get").toHex();
+    var id = legendEntry.find("[name=id]").val();
     var color = new Color(name, hex, count, id);
 
     addColorToLegend(color);
@@ -169,9 +176,9 @@ function addColor() {
     return false;
   });
 
-  newLegendEntry.find(".color_paint").click(function (event) {
+  legendEntry.find(".color_paint").click(function (event) {
 
-    var id = newLegendEntry.find("[name=id]").val();
+    var id = legendEntry.find("[name=id]").val();
 
     if(!legend[id]) return;
 
@@ -219,13 +226,13 @@ function addColor() {
 
   });
 
-  newLegendEntry.find(".color_edit").click(function (event) {
-    newLegendEntry.find(".color_save").removeClass("hidden");
-    newLegendEntry.find(".color_edit").addClass("hidden");
-    newLegendEntry.find("[name=name]").attr('readonly', false);
-    newLegendEntry.find("[name=hex]").attr('disabled', false);
-    newLegendEntry.find("[name=hex]").spectrum({disabled: false});
-    newLegendEntry.find("[name=number]").attr('readonly', false);
+  legendEntry.find(".color_edit").click(function (event) {
+    legendEntry.find("save").removeClass("hidden");
+    legendEntry.find(".color_edit").addClass("hidden");
+    legendEntry.find("[name=name]").attr('readonly', false);
+    legendEntry.find("[name=hex]").attr('disabled', false);
+    legendEntry.find("[name=hex]").spectrum({disabled: false});
+    legendEntry.find("[name=number]").attr('readonly', false);
 
   });
 }

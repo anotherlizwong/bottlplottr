@@ -5,9 +5,9 @@
   background: #fff url($grid-background) repeat left top;
   padding: $buffer;
   overflow: hidden;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 1em;
+  margin: 1em auto;
+  clear: both;
+  float: left;
   .cell {
     background-color: $cell-color;
     float: left;

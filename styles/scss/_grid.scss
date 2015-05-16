@@ -4,7 +4,7 @@
   border: none;//1px solid $black;
   background: #fff url($grid-background) repeat left top;
   padding: $buffer;
-  overflow: auto;
+  overflow: hidden;
   margin-right: auto;
   margin-left: auto;
   margin-top: 1em;
@@ -19,8 +19,9 @@
     clear: both;
     width: 100%;
   }
-  .row:nth-child(odd) {
+  .row:nth-child(even) {
     padding-left: $cap-diameter/2;
   }
   @include material-shadow(2);
+  @include clearfix();
 }

@@ -4,7 +4,7 @@
   border: none;
   background: #fff url("../../assets/woodtexture7.jpg") repeat left top;
   padding: 2.5px;
-  overflow: auto;
+  overflow: hidden;
   margin-right: auto;
   margin-left: auto;
   margin-top: 1em;
@@ -21,8 +21,13 @@
   clear: both;
   width: 100%;
 }
-#grid .row:nth-child(odd) {
+#grid .row:nth-child(even) {
   padding-left: 25px;
+}
+#grid::after {
+  clear: both;
+  content: "";
+  display: table;
 }
 
 .container {

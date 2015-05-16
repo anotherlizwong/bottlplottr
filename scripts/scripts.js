@@ -29,6 +29,8 @@ $(document).ready(function () {
   $('#clear_grid').click(function (event) {
     clearGrid();
   });
+
+  $("#your_ul_id").spinner();
 });
 
 function addColor() {

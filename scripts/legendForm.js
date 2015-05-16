@@ -15,14 +15,14 @@ var legendEntrySubmit = function (event) {
 
 function triggerLegendFormFields(form, hide) {
   if (hide) {
-    form.find(".save").addClass("hidden");
-    form.find(".edit").removeClass("hidden");
+    form.find(".save").addClass("remove");
+    form.find(".edit").removeClass("remove");
     form.find("[name=name]").attr('readonly', true);
     form.find("[name=number]").attr('readonly', true);
     form.find("[name=hex]").spectrum({disabled: true});
   } else {
-    form.find(".save").removeClass("hidden");
-    form.find(".edit").addClass("hidden");
+    form.find(".save").removeClass("remove");
+    form.find(".edit").addClass("remove");
     form.find("[name=name]").attr('readonly', false);
     form.find("[name=number]").attr('readonly', false);
     form.find("[name=hex]").attr('disabled', false);
@@ -89,7 +89,7 @@ function addLegendEntry() {
   legendEntry.removeClass("hidden");
   legendEntry.removeClass("color_input");
   legendEntry.attr('id', 'form' + colorId);
-  legendEntry.find(".edit").addClass("hidden");
+  legendEntry.find(".edit").addClass("remove");
   legendEntry.find("[name=hex]").spectrum();
   legendEntry.find("[name=id]").val(colorId);
   legendEntry.appendTo($('#legend'));

@@ -366,6 +366,10 @@ button:hover {
   visibility: hidden;
 }
 
+.remove {
+  display: none;
+}
+
 body {
   background-color: #4593e3;
   font-family: 'Arial';

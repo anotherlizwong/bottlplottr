@@ -12,7 +12,7 @@
 }
 
 // override color picker to make it a cap
-$micro-cap: $cap-diameter / 4;
+$micro-cap: $cap-diameter*.75;
 .sp-replacer.sp-light, .sp-replacer.sp-light:hover {
   @extend .cap;
   @include material-shadow(2);

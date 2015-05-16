@@ -34,8 +34,8 @@
 
 .sp-replacer.sp-light, .sp-replacer.sp-light:hover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  width: 12.5px;
-  height: 12.5px;
+  width: 37.5px;
+  height: 37.5px;
   padding: inherit;
   background-color: transparent;
   border: none;
@@ -48,12 +48,12 @@
 }
 .sp-replacer.sp-light .sp-preview, .sp-replacer.sp-light:hover .sp-preview {
   background-image: none;
-  width: 12.5px;
-  height: 12.5px;
-  border-radius: 12.5px;
+  width: 37.5px;
+  height: 37.5px;
+  border-radius: 37.5px;
 }
 .sp-replacer.sp-light .sp-preview .sp-preview-inner, .sp-replacer.sp-light:hover .sp-preview .sp-preview-inner {
-  border-radius: 12.5px;
+  border-radius: 37.5px;
 }
 
 .sp-replacer.sp-light:hover {
@@ -70,13 +70,6 @@
   background: #F39814;
   color: #fff;
   @extends .cap;
-}
-
-.selectable {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 60%;
 }
 
 .hidden {

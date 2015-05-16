@@ -60,6 +60,13 @@ $(document).ready(function () {
 
   addColor();
 
+  generateGridInternal(1,1,1,1);
+
+  addColorToLegend(new Color("test", "5e3a3a", 10, 0));
+
+  $("#grid").selectable({
+    filter: ".cap"
+  });
 });
 
 var legend = {}
@@ -107,6 +114,25 @@ function addColor() {
   });
 
   newguy.find(".color_paint").click(function(event){
+    var id = newguy.find("[name=id]").val();
+    var hex = legend[id].hex;
+
+    var count = $(".ui-selected").length;
+    // add the color of the current cap
+    console.log($(".ui-selected").length);
+    $(".ui-selected").css('background-color', '#'+hex);
+    console.log($(".ui-selected").length);
+    // assign this square to the selected cap
+    $(".ui-selected").addClass("cap" + id);
+    console.log($(".ui-selected").length);
+
+    // remove the current selections
+    $(".ui-selected").removeClass("empty").removeClass("ui-selected");
+    console.log($(".ui-selected").length);
+
+
+    // update the pointers;
+    legend[id].count = legend[id].count - count;
 
   });
 
@@ -138,6 +164,16 @@ function generateGrid() {
   var height_in = parseInt($('#y_in').val()); // height
   var width = parseInt($('#x_ft').val()); // width
   var width_in = parseInt($('#x_in').val()); // width
+
+  generateGridInternal(height, height_in, width, width_in);
+
+}
+
+function generateGridInternal(height, height_in, width, width_in) {
+  //var height = parseInt($('#y_ft').val()); // height
+  //var height_in = parseInt($('#y_in').val()); // height
+  //var width = parseInt($('#x_ft').val()); // width
+  //var width_in = parseInt($('#x_in').val()); // width
 
   console.log(height * 12 + height_in + "inches");
   console.log(width  * 12 + width_in + "inches");

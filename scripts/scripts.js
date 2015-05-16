@@ -67,8 +67,6 @@ $(document).ready(function () {
 });
 
 function addColor() {
-
-debugger;
   var newguy = $('.color_input').clone();
   newguy.removeClass("hidden");
   newguy.removeClass("color_input");

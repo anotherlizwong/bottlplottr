@@ -64,7 +64,7 @@ input:focus {
 }
 
 input[type="number"], .number-field {
-  width: 80px;
+  width: 85px;
   text-align: right;
 }
 input[type="number"]:read-only, .number-field:read-only {

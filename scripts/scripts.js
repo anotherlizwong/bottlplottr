@@ -44,7 +44,7 @@ $(document).ready(function () {
     });
 
    // reset the styles to empty
-  var resetStyles = function(elem) {
+   var resetStyles = function(elem) {
     var regEx = /cap[0-9]+/;
     $.each(elem, function (index, value) {
       var el = value;
@@ -80,9 +80,9 @@ $(document).ready(function () {
     deleteColorFromLegend(id);
   });
 
-addColor();
+  addColor();
 
-generateGridInternal(1, 1, 1, 1);
+  generateGridInternal(1, 1, 1, 1);
 
   //addColorToLegend(new Color("test", "5e3a3a", 10, 0));
   //addColorToLegend(new Color("test2", "111111", 10, 1));
@@ -213,7 +213,9 @@ function clearInput() {
   $('#testform')[0].reset();
 }
 
-var CAP_PERIMITER = 1.4;
+var CAP_PERIMITER = 1.38;
+var CAP_SIZE = 1.15;
+var CAP_GAP = 0.23;
 
 function generateGrid() {
   var height = parseInt($('#y_ft').val()); // height
@@ -225,50 +227,41 @@ function generateGrid() {
   width = width ? width : 0;
   width_in = width_in ? width_in : 0;
 
-
   generateGridInternal(height, height_in, width, width_in);
 
 }
 
 function generateGridInternal(height, height_in, width, width_in) {
-  //var height = parseInt($('#y_ft').val()); // height
-  //var height_in = parseInt($('#y_in').val()); // height
-  //var width = parseInt($('#x_ft').val()); // width
-  //var width_in = parseInt($('#x_in').val()); // width
+  var tot_height_in = height * 12 + height_in;
+  var tot_width_in = width * 12 + width_in;
+  console.log(tot_height_in + "inches");
+  console.log(tot_width_in + "inches");
 
-  console.log(height * 12 + height_in + "inches");
-  console.log(width * 12 + width_in + "inches");
-
-  var _y = Math.round((height * 12 + height_in) / CAP_PERIMITER);
-  var _x = Math.round((width * 12 + width_in) / CAP_PERIMITER);
+  var _y = Math.floor((tot_height_in) / CAP_PERIMITER);
+  var _x = Math.floor((tot_width_in - CAP_GAP) / CAP_PERIMITER);
 
   var count = 0;
   var width = 0;
   var height = 0;
-  for (var i = 0; i < _y; i++) {
+  for (var i = 0; i <= _y; i++) {
 
     var row = $('<div />').addClass('row');
 
-    for (var j = 0; j < _x; j++) {
-      var cap = $('<div />').addClass('cap').addClass('ui-widget-content').addClass("empty");
-      var cell = $('<div />').addClass('cell').attr('id', 'div' + i + '-' + j);
+    for (var j = 0; j <= _x; j++) {
+      if (j != _x || i % 2 == 0) {
+        var cap = $('<div />').addClass('cap').addClass('ui-widget-content').addClass("empty");
+        var cell = $('<div />').addClass('cell').attr('id', 'div' + i + '-' + j);
+        count++;
 
-      count++;
-
-      cap.appendTo(cell);
-      cell.appendTo(row);
-      if (i == 0) {
-        width += 50;
-        if (j %2 == 1) {
-          width += (45/2);
-        }
+        cap.appendTo(cell);
+        cell.appendTo(row);
       }
     }
 
-    height += 50.5;
-
     row.appendTo($("#grid"));
   }
+  height = convertInToPx(tot_height_in);
+  width = convertInToPx(tot_width_in);
 
   $("#grid").css("width", width);
   $("#grid").css("height", height);
@@ -276,5 +269,11 @@ function generateGridInternal(height, height_in, width, width_in) {
   console.log("There are " + count + " free cap spots");
   $("#tot_avail").text(count);
   $("#tot_remaining").text(count);
-}
+};
+
+var convertInToPx = function (inches) {
+  var width = $('.cap').width();
+  return parseFloat(width*inches/CAP_SIZE);
+};
+
 

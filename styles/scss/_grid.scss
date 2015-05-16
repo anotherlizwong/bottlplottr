@@ -1,11 +1,9 @@
 #grid {
-  display: block;
-  border-color: $black;
+  border: 1px solid $black;
+  background: #fff url($grid-background) repeat right top;
 
   .cell {
-    border-color: $gray;
     background-color: $cell-color;
-    display: block;
     float: left;
     width: $cap-diameter;
     height: $cap-diameter;

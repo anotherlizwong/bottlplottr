@@ -109,7 +109,7 @@ $(document).ready(function () {
 
   addColor();
 
-  generateGridInternal(1, 1, 1, 1);
+  generateGridInternal(0, 2, 0, 12);
 
   //addColorToLegend(new Color("test", "5e3a3a", 10, 0));
   //addColorToLegend(new Color("test2", "111111", 10, 1));
@@ -251,9 +251,8 @@ function clearInput() {
   $('#testform')[0].reset();
 }
 
-var CAP_PERIMITER = 1.38;
-var CAP_SIZE = 1.15;
-var CAP_GAP = 0.23;
+var CAP_GAP = .05;
+var CAP_SIZE = 1.20;
 
 function generateGrid() {
   var height = parseInt($('#y_ft').val()); // height
@@ -275,24 +274,35 @@ function returnLegendCapsBack() {
 }
 
 function generateGridInternal(height, height_in, width, width_in) {
+
+  console.log('generating grid');
+
+  var grid = $("#grid");
+
   var tot_height_in = height * 12 + height_in;
   var tot_width_in = width * 12 + width_in;
-  console.log(tot_height_in + "inches");
-  console.log(tot_width_in + "inches");
 
-  var _y = Math.floor((tot_height_in) / CAP_PERIMITER);
-  var _x = Math.floor((tot_width_in - CAP_GAP) / CAP_PERIMITER);
+
+  // get the approximate amount of caps that should fit in the width
+  //  of the given distance
+  var _y = tot_height_in <= 1 ? 1 : Math.floor(tot_height_in / (CAP_SIZE + CAP_GAP) );
+  var _x = tot_width_in <= 1 ? 1 :  Math.floor(tot_width_in / (CAP_SIZE + CAP_GAP) );
+
+  console.log(_y + " = " + tot_height_in + "/" + CAP_SIZE);
+  console.log(_x + " = " + tot_width_in + "/" + CAP_SIZE);
+  debugger;
 
   returnLegendCapsBack();
 
+  // Keep track how many caps are available maxiumum
   var count = 0;
-  var width = 0;
-  var height = 0;
-  for (var i = 0; i <= _y; i++) {
+
+  for (var i = 0; i < _y; i++) {
 
     var row = $('<div />').addClass('row');
 
-    for (var j = 0; j <= _x; j++) {
+    for (var j = 0; j < _x; j++) {
+
       if (j != _x || i % 2 == 0) {
         var cap = $('<div />').addClass('cap').addClass('ui-widget-content').addClass("empty");
         var cell = $('<div />').addClass('cell').attr('id', 'div' + i + '-' + j);
@@ -303,21 +313,19 @@ function generateGridInternal(height, height_in, width, width_in) {
       }
     }
 
-    row.appendTo($("#grid"));
-  }
-  height = convertInToPx(tot_height_in);
-  width = convertInToPx(tot_width_in);
+    row.appendTo(grid);
+    row.css('width', (tot_width_in *50));
 
-  $("#grid").css("width", width);
-  $("#grid").css("height", height);
+  }
+
+  console.log(count);
+
+  var grid_height = parseFloat(49*tot_height_in/CAP_SIZE);
+  var grid_width = parseFloat(49*tot_width_in/CAP_SIZE);
+
+  grid.css("width", grid_width);
+  grid.css("height", grid_height);
 
   $("#tot_avail").text(count);
   $("#tot_remaining").text(count);
 };
-
-var convertInToPx = function (inches) {
-  var width = $('.cap').width();
-  return parseFloat(width*inches/CAP_SIZE);
-};
-
-

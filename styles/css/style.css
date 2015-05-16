@@ -170,21 +170,21 @@ button:hover {
 
 .selectable .ui-selecting {
   @exends .cap;
-  background: #FECA40;
-  opacity: 1;
+  background: #FECA40 !important;
+  opacity: .9;
 }
 .selectable .ui-selecting:hover {
-  opacity: 1;
+  opacity: .9;
 }
 
 .selectable .ui-selected {
-  background: #F39814;
+  background: #F39814 !important;
   color: #fff;
-  opacity: 1;
+  opacity: .9;
   @extends .cap;
 }
 .selectable .ui-selected:hover {
-  opacity: 1;
+  opacity: .9;
 }
 
 .hidden {

@@ -23,7 +23,6 @@ function Color(name, hex, count, id) {
     this.count = this.count - 1;
   }
 }
-
 $(document).ready(function () {
 
   $('#testform').submit(function (event) {
@@ -39,6 +38,10 @@ $(document).ready(function () {
   $('#clear_grid').click(function (event) {
     clearGrid();
   });
+
+  $("#myDiv").on("remove", function (event) {
+    alert("Element was removed");
+  })
 
   $('#add_legend').click(function (event) {
     addColor();
@@ -60,7 +63,7 @@ $(document).ready(function () {
 
   addColor();
 
-  generateGridInternal(1,1,1,1);
+  generateGridInternal(1, 1, 1, 1);
 
   addColorToLegend(new Color("test", "5e3a3a", 10, 0));
   addColorToLegend(new Color("test2", "111111", 10, 1));
@@ -107,7 +110,7 @@ function addColor() {
     var count = parseInt(newguy.find("[name=number]").val());
     var hex = newguy.find("[name=hex]").spectrum("get").toHex();
     var id = newguy.find("[name=id]").val();
-    var color = new Color(name,hex,count, id);
+    var color = new Color(name, hex, count, id);
 
     addColorToLegend(color);
 
@@ -115,32 +118,54 @@ function addColor() {
   });
 
   // when deleted, it must delete.
-  // when over
   // when save is done, repaint automatically.
   // make sure count is still valid for all parties included.
 
 
-  newguy.find(".color_paint").click(function(event){
+  newguy.find(".color_paint").click(function (event) {
     var id = newguy.find("[name=id]").val();
     var hex = legend[id].hex;
 
     var count = $(".ui-selected").length;
 
     // add the color of the current cap
-    $(".ui-selected").css('background-color', '#'+hex);
+    $(".ui-selected").css('background-color', '#' + hex);
+
+    console.log(legend[0].count);
+    // go throug the current caps and return their tokens
+    $(".ui-selected").each(function (i, object) {
+
+      var classToRemove;
+      $(object.classList).each(function(j, o){
+        if (o.indexOf("cap") > -1 && o.length > 3) {
+          classToRemove = o;
+          legend[o.substring(3)].count = legend[o.substring(3)].count + 1;
+        }
+      });
+
+      $(object).removeClass(classToRemove);
+
+      //// MAKING AN ASSUMPTION THAT THE STYLE IS FIRST. Poor form, i dont' care
+      //var capId = object.classList[0].split('-')[1];
+      //if(capId != undefined) {
+      //  legend[capId].count = legend[capId] + 1;
+      //}
+    });
+
 
     // assign this square to the selected cap
     $(".ui-selected").addClass("cap" + id);
 
-    // remove the current selections
+    //remove the current selections
     $(".ui-selected").removeClass("empty").removeClass("ui-selected");
+
 
     // update the pointers;
     legend[id].count = legend[id].count - count;
-
+    console.log(legend[0].count);
   });
 
-  newguy.find(".color_edit").click(function(event) {
+  newguy.find(".color_edit").click(function (event) {
     newguy.find(".color_save").removeClass("hidden");
     newguy.find(".color_edit").addClass("hidden");
     newguy.find("[name=name]").attr('readonly', false);
@@ -168,10 +193,10 @@ function generateGrid() {
   var height_in = parseInt($('#y_in').val()); // height
   var width = parseInt($('#x_ft').val()); // width
   var width_in = parseInt($('#x_in').val()); // width
-  height = height? height:0;
-  height_in = height_in? height_in:0;
-  width = width? width:0;
-  width_in = width_in? width_in:0;
+  height = height ? height : 0;
+  height_in = height_in ? height_in : 0;
+  width = width ? width : 0;
+  width_in = width_in ? width_in : 0;
 
 
   generateGridInternal(height, height_in, width, width_in);
@@ -185,10 +210,10 @@ function generateGridInternal(height, height_in, width, width_in) {
   //var width_in = parseInt($('#x_in').val()); // width
 
   console.log(height * 12 + height_in + "inches");
-  console.log(width  * 12 + width_in + "inches");
+  console.log(width * 12 + width_in + "inches");
 
-  var _y = Math.round((height*12 + height_in)/CAP_PERIMITER);
-  var _x = Math.round((width*12 + width_in)/CAP_PERIMITER);
+  var _y = Math.round((height * 12 + height_in) / CAP_PERIMITER);
+  var _x = Math.round((width * 12 + width_in) / CAP_PERIMITER);
 
   var count = 0;
   var width = 0;
@@ -205,7 +230,7 @@ function generateGridInternal(height, height_in, width, width_in) {
 
       cap.appendTo(cell);
       cell.appendTo(row);
-      if(i ==0) {
+      if (i == 0) {
         width += 52.5;
       }
     }

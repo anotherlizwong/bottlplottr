@@ -24,13 +24,16 @@
 
   <div>
 
-    <div class="container">
+    <div class="container palette">
       <div class="overall-total">
         <div class="text-field">Total Spaces Remaining</div><div class="number-field"><span class="total" id="tot_remaining"></span><span class="total" id="tot_avail"></span></div>
+        <div class="toggle">
+          <button class="collapse" onClick="javascript:toggleView();"></button>
+        </div>
       </div>
       <div id="legend">
       </div>
-      <button id="add_legend"><i  class="fa fa-plus-square-o"></i> Row</button>
+      <button id="add_legend"><i class="fa fa-plus-square-o"></i> Row</button>
     </div>
 
     <form id="testform" action="#" class="container">
@@ -45,20 +48,20 @@
 
     <div class="selectable">
       <div id="grid">
+      </div>
     </div>
-  </div>
 
-</div>
-<form class="color_input hidden" action="#">
-  <input class="auto-complete-name" type="text" name="name" required placeholder="Cap Name">
-  <input type="number" name="number" required placeholder="Count"><!-- <span class="total"></span> -->
-  <input name="hex" type="text" value="black">
-  <input name="id" type="hidden"/>
-  <button class="save" type="submit"><i class="fa fa-check"></i></button>
-  <button class="edit" type="button"><i class="fa fa-edit"></i></button>
-  <button class="color_paint" type="button"><i class="fa fa-paint-brush"></i></button>
-  <button class="delete" type="button"><i class="fa fa-close"></i></button>
-</form>
+  </div>
+  <form class="color_input hidden" action="#">
+    <input class="auto-complete-name" type="text" name="name" required placeholder="Cap Name">
+    <input type="number" name="number" required placeholder="Count"><!-- <span class="total"></span> -->
+    <input name="hex" type="text" value="black">
+    <input name="id" type="hidden"/>
+    <button class="save" type="submit"><i class="fa fa-check"></i></button>
+    <button class="edit" type="button"><i class="fa fa-edit"></i></button>
+    <button class="color_paint" type="button"><i class="fa fa-paint-brush"></i></button>
+    <button class="delete" type="button"><i class="fa fa-close"></i></button>
+  </form>
 
 </body>
 </html>

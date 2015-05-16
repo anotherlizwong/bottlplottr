@@ -36,12 +36,34 @@
   margin: 1em;
   border: 1px solid #226fbe;
   background-color: #226fbe;
+  color: #fff;
   -moz-border-radius: 1px;
   -webkit-border-radius: 1px;
   -ms-border-radius: 1px;
   border-radius: 1px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  color: #fff;
+}
+
+.toggle {
+  width: 175px;
+  float: right;
+}
+.toggle > .collapse {
+  font-family: "FontAwesome";
+  cursor: pointer;
+  float: right;
+  text-align: right;
+}
+.toggle > .collapse:before {
+  content: "\f0a8";
+}
+.toggle::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.toggle.in > .collapse:before {
+  content: "\f0a9";
 }
 
 .over-wood {
@@ -97,7 +119,7 @@ input + .total {
 input + .total:before {
   content: '/';
   padding-right: .5em;
-  padding-left: 0em;
+  padding-left: .5em;
 }
 
 input:read-only + .total {
@@ -132,6 +154,19 @@ input:read-only {
   background: transparent;
   color: #fff;
   font-size: 1.2em;
+}
+
+.toggled {
+  position: fixed;
+  z-index: 10;
+  top: 15em;
+  left: 1em;
+}
+.toggled .auto-complete-name, .toggled [name="name"], .toggled [name="number"], .toggled .save, .toggled .edit, .toggled .delete, .toggled .text-field, .toggled .number-field, .toggled #add_legend {
+  display: none;
+}
+.toggled .toggle {
+  width: 100%;
 }
 
 button {

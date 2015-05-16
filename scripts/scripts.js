@@ -7,14 +7,14 @@ var CAP_SIZE = 1.20;
  * Variable holds a key and map to a Color object
  * @type {{}}
  */
-var legend = {}
+ var legend = {}
 
-$(document).ready(function () {
+ $(document).ready(function () {
 
   /**
    * Used to log events
    */
-  $(document).bind("logEvent", function () {
+   $(document).bind("logEvent", function () {
     var x;
     for (x in legend) {
       console.log(legend[x].toString());
@@ -24,7 +24,7 @@ $(document).ready(function () {
   /**
    * howManyFewerSpots tells us how many spots fewer there are on the board. Pass a negative number to indicate there are more spots
    */
-  $('.overall-total').bind('legendUpdated', function (e, howManyFewerSpots) {
+   $('.overall-total').bind('legendUpdated', function (e, howManyFewerSpots) {
     var value = $(this).find("#tot_remaining");
     value.text(parseInt(value.text()) - howManyFewerSpots);
   });
@@ -32,7 +32,7 @@ $(document).ready(function () {
   /**
    * generates the grid and cells and selectable locations
    */
-  $('#testform').submit(function (event) {
+   $('#testform').submit(function (event) {
     clearGrid();
     generateGrid();
     $(".selectable").selectable({
@@ -46,8 +46,8 @@ $(document).ready(function () {
   $(document).keydown(function (event) {
     if (event.wich == 8 || event.which == 46) { //100 is the 'd' key. The delete key is difficult to bind.
       resetStyles($(".ui-selected"));
-    }
-  });
+  }
+});
 
   // reset the styles to empty
   var resetStyles = function (elem) {
@@ -79,11 +79,11 @@ $(document).ready(function () {
   /**
    * Ties to main legend form and allows us to create additional legend entries
    */
-  $('#add_legend').click(function (event) {
+   $('#add_legend').click(function (event) {
     addLegendEntry();
   });
 
-  $(document).on("click", ".delete", function (event) {
+   $(document).on("click", ".delete", function (event) {
     var id = $(this).closest('form').find('[name=id]');
     $(this).closest('form').remove();
 
@@ -114,26 +114,26 @@ $(document).ready(function () {
   // }).error(function(){
   //   console.log('error');
   // });
-  $('.auto-complete-name').autocomplete({
-    minLength: 0,
-    source: function(req, add) {
-        add($.map(capData, function(el) {
-          return {
-            label: el.name,
-            value: el.filename
-          };
-        }));
-      },
-      focus: function(event, ui) {
-        $(this).val(ui.item.label);
-        return false;
-      },
-      select: function(event, ui) {
-        $(this).val(ui.item.label);
+$('.auto-complete-name').autocomplete({
+  minLength: 0,
+  source: function(req, add) {
+    add($.map(capData, function(el) {
+      return {
+        label: el.name,
+        value: el.filename
+      };
+    }));
+  },
+  focus: function(event, ui) {
+    $(this).val(ui.item.label);
+    return false;
+  },
+  select: function(event, ui) {
+    $(this).val(ui.item.label);
         // $(this)
         return false;
       }
-  });
+    });
 
 });
 
@@ -143,4 +143,15 @@ function bottle_cap(color) {
   this.describe = function () {
     return "I'm a bottle cap of color " + this.color;
   };
+}
+
+function toggleView(e) {
+  if ($(".toggle").hasClass("in")) {
+    $(".container.palette").removeClass("toggled");
+    $(".toggle").removeClass("in");
+  }
+  else {
+    $(".container.palette").addClass("toggled");
+    $(".toggle").addClass("in");
+  }
 }

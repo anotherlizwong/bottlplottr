@@ -4,9 +4,28 @@
   margin: 1em;
   border: 1px solid $base-color-border;
   background-color: $base-color;
+  color: $text-color;
   @include border-radius(1px);
   @include material-shadow(1);
-  color: $text-color;
+
+}
+
+.toggle {
+  width: 175px;
+  float: right;
+  & > .collapse {
+    font-family: "FontAwesome";
+    cursor: pointer;
+    float: right;
+    text-align: right;
+    &:before {
+      content: "\f0a8";
+    }
+  }
+  @include clearfix();
+  &.in > .collapse:before {
+      content: "\f0a9";
+  }
 }
 
 .over-wood {
@@ -54,7 +73,7 @@ input + .total {
   &:before {
     content: '/';
     padding-right: .5em;
-    padding-left: 0em;
+    padding-left: .5em;
   }
 }
 input:read-only + .total {
@@ -84,4 +103,27 @@ input:read-only {
   background:transparent;
   color: $text-color;
   font-size: 1.2em;
+}
+
+.toggled {
+  & .auto-complete-name,
+  & [name="name"],
+  & [name="number"],
+  & .save,
+  & .edit,
+  & .delete,
+  & .text-field,
+  & .number-field,
+  & #add_legend {
+    display: none;
+  }
+  & .toggle {
+    width: 100%;
+  }
+  position: fixed;
+  z-index: 10;
+  top: 15em;
+  left: 1em;
+  // width: 200px;
+  // height: 100px;
 }

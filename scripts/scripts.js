@@ -8,7 +8,7 @@ function bottle_cap(color) {
 }
 
 function color(name, hex, count) {
-  this.color = color;
+  this.name = name;
   this.hex = hex;
   this.count = count;
   this.increment = function () {
@@ -32,15 +32,41 @@ $(document).ready(function () {
     clearGrid();
   });
 
-  $("#your_ul_id").spinner();
+  $('#add_legend').click(function (event) {
+    addColor();
+  });
+
+  $('#save_legend').click(function (event) {
+
+  });
+
+  $(document).on("click", ".color_delete", function(event){
+    $(this).closest('div').remove();
+  });
+
+  $(document).on("click", ".color_add", function(event){
+    $(this).closest('div').remove();
+  });
+
+
 });
 
 function addColor() {
-  var row = '<tr><input type="text" id="name"></tr> \
-   <tr><input type="number" id="hex"></tr> \
-   <tr><input type="number" id="count"</tr>';
-  $('#colorTable > tbody:last').append('<tr>name</tr><tr>hex</tr><tr>count</tr>');
+  var row =  $('\
+    <div> \
+    <label for="name">Name</label><input name="name" type="text" required> \
+    <label for="hex">Hex</label><input name="hex" type="text" required> \
+    <label for="count">Count</label> <input name="count" type="number" required>\
+    <input type="hidden"/>\
+    <button class="color_delete" type="button">Delete</button> \
+    </div> ');
+
+  row.find("[name=hex]").spectrum();
+
+  $('#legend').append(row);
 }
+
+// GRID FUNCTIONS
 
 function clearGrid() {
   $("#grid").empty();

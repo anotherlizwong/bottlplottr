@@ -67,6 +67,9 @@ input[type="number"], .number-field {
   width: 80px;
   text-align: right;
 }
+input[type="number"]:read-only, .number-field:read-only {
+  padding-right: 0px;
+}
 
 .text-field {
   width: 241px;
@@ -78,8 +81,33 @@ input[type="number"], .number-field {
   float: left;
 }
 
-.total {
-  margin: 0 .5em;
+.overall-total {
+  width: 100%;
+}
+.overall-total::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+input + .total {
+  display: none;
+  font-size: 1.2em;
+}
+input + .total:before {
+  content: '/';
+  padding-right: .5em;
+  padding-left: .5em;
+}
+
+input:read-only + .total {
+  display: inline;
+}
+
+.total + .total:before {
+  content: '/';
+  padding-right: .5em;
+  padding-left: .5em;
 }
 
 ::-webkit-input-placeholder {
@@ -197,6 +225,12 @@ button:hover {
 
 .selectable {
   padding: 10em;
+  width: 100%;
+}
+.selectable::after {
+  clear: both;
+  content: "";
+  display: table;
 }
 
 .selectable .ui-selected {

@@ -32,6 +32,9 @@ input:not([type=submit]):not([type=file]) {
 input[type="number"],.number-field {
   width: 80px;
   text-align: right;
+  &:read-only {
+    padding-right:0px;
+  }
 }
 .text-field {
   width: 241px;
@@ -41,8 +44,27 @@ input[type="number"],.number-field {
   font-size: 1.2em;
   float: left;
 }
-.total {
-  margin: 0 .5em;
+.overall-total {
+  width: 100%;
+  @include clearfix();
+}
+input + .total {
+  display: none;
+  font-size: 1.2em;
+  &:before {
+    content: '/';
+    padding-right: .5em;
+    padding-left: .5em;
+  }
+}
+input:read-only + .total {
+  display: inline;
+}
+
+.total + .total:before {
+  content: '/';
+  padding-right: .5em;
+  padding-left: .5em;
 }
 
 ::-webkit-input-placeholder {

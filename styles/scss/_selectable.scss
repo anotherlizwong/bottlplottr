@@ -8,6 +8,8 @@
 }
 .selectable {
   padding: 10em;
+  width: 100%;
+  @include clearfix();
 }
 
 .selectable  .ui-selected {

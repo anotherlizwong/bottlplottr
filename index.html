@@ -18,11 +18,11 @@
 </head>
 <body>
 
-  <div id="phil_dont_touch">
+  <div>
 
     <div class="container">
-      <div>
-        <div class="text-field">Total Spaces Remaining</div><div class="number-field"><span class="total" id="tot_remaining">0</span>/<span class="total" id="tot_avail">0</span></div>
+      <div class="overall-total">
+        <div class="text-field">Total Spaces Remaining</div><div class="number-field"><span class="total" id="tot_remaining"></span><span class="total" id="tot_avail"></span></div>
       </div>
       <div id="legend">
       </div>
@@ -52,7 +52,7 @@
 </div>
 <form class="color_input hidden" action="#">
   <input type="text" name="name" required placeholder="Cap Name">
-  <input type="number" name="number" required placeholder="Count">
+  <input type="number" name="number" required placeholder="Count"><span class="total"></span>
   <input name="hex" type="text" value="black">
   <input name="id" type="hidden"/>
   <button class="color_save" type="submit"><i class="fa fa-check"></i></button>

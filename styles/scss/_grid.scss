@@ -1,0 +1,13 @@
+  .cell {
+    float: left;
+    width: $cap-diameter;
+    height: $cap-diameter;
+  }
+  .row {
+    clear: both;
+    width: 100%;
+  }
+  .row:nth-child(odd) {
+    padding-left: $cap-diameter/2;
+  }
+}

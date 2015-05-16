@@ -116,6 +116,9 @@ button:hover {
   border-radius: 50px;
   background-color: #17aa56;
 }
+.cap:hover, .sp-replacer.sp-light:hover {
+  opacity: .8;
+}
 .cap.empty, .empty.sp-replacer.sp-light {
   background-color: #fff;
   opacity: .15;

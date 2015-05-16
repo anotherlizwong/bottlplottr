@@ -1,4 +1,4 @@
-.cap, .drag {
+.cap {
   width: 135px;
   height: 135px;
   margin: 7.5px;
@@ -6,7 +6,7 @@
   background-color: green;
 }
 
-.empty > .cap, .empty > .drag {
+.empty > .cap {
   background-color: transparent;
   border: 4px dashed #999;
 }
@@ -30,11 +30,6 @@
 }
 #grid .row:nth-child(odd) {
   padding-left: 75px;
-}
-
-.drag {
-  position: absolute;
-  cursor: move;
 }
 
 /*# sourceMappingURL=style.css.map */

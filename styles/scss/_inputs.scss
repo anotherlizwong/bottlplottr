@@ -24,3 +24,7 @@ input {
 input:not([type=submit]):not([type=file]) {
   // intentionally blank
 }
+
+input[type="number"] {
+  width: 55px;
+}

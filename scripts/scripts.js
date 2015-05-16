@@ -25,7 +25,7 @@ $(document).ready(function () {
   $('#testform').submit(function (event) {
     clearGrid();
     generateGrid();
-    clearInput();
+    // clearInput();
     $("#grid").selectable({
       filter: ".cap"
     });
@@ -76,14 +76,16 @@ function clearInput() {
 var CAP_PERIMITER = 1.4;
 
 function generateGrid() {
-  var height = parseInt($('#y').val()); // height
-  var width = parseInt($('#x').val()); // width
+  var height = parseInt($('#y_ft').val()); // height
+  var height_in = parseInt($('#y_in').val()); // height
+  var width = parseInt($('#x_ft').val()); // width
+  var width_in = parseInt($('#x_in').val()); // width
 
-  console.log(height * 12 + "inches");
-  console.log(width  * 12 + "inches");
+  console.log(height * 12 + height_in + "inches");
+  console.log(width  * 12 + width_in + "inches");
 
-  var _y = Math.round((height*12)/CAP_PERIMITER);
-  var _x = Math.round((width*12)/CAP_PERIMITER);
+  var _y = Math.round((height*12 + height_in)/CAP_PERIMITER);
+  var _x = Math.round((width*12 + width_in)/CAP_PERIMITER);
 
   var count = 0;
   var width = 0;

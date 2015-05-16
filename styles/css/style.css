@@ -8,6 +8,7 @@
   margin-right: auto;
   margin-left: auto;
   margin-top: 1em;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 #grid .cell {
   background-color: transparent;
@@ -49,6 +50,10 @@ input {
   padding: 15px;
   background: #fff;
   margin: 0 0 10px 0px;
+}
+
+input[type="number"] {
+  width: 55px;
 }
 
 .cap, .sp-replacer.sp-light, .sp-replacer.sp-light:hover {

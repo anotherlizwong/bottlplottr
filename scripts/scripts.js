@@ -70,7 +70,7 @@ function addColorToLegend(color) {
 
   legend[color.id] = color;
 
-  console.log("added " + color.name + " to dictionary");
+  console.log("saved " + color.id + " to dictionary");
 }
 
 function deleteColorFromLegend(id) {
@@ -94,6 +94,9 @@ function addColor() {
     newguy.find(".color_save").addClass("hidden");
     newguy.find(".color_edit").removeClass("hidden");
     newguy.find("[name=name]").attr('readonly', true).addClass("foobar");
+    newguy.find("[name=number]").attr('readonly', true).addClass("foobar")
+
+    newguy.find("[name=hex]").spectrum({disabled: true});
 
     var name = newguy.find("[name=name]").val();
     var count = parseInt(newguy.find("[name=number]").val());
@@ -112,6 +115,9 @@ function addColor() {
     newguy.find(".color_save").removeClass("hidden");
     newguy.find(".color_edit").addClass("hidden");
     newguy.find("[name=name]").attr('readonly', false).removeClass("foobar");
+    newguy.find("[name=hex]").spectrum({disabled: false});
+    newguy.find("[name=number]").attr('readonly', false).removeClass("foobar");
+
   });
 }
 

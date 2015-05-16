@@ -1,0 +1,42 @@
+.container {
+  float:left;
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid $base-color-border;
+  background-color: $base-color;
+  @include border-radius(1px);
+  @include material-shadow(1);
+  // @include material-hover();
+}
+
+.over-wood {
+  position: absolute;
+}
+
+input {
+  border: 1px solid $base-color-border;
+  padding: 15px;
+  background: rgba(255,255,255, .5);
+  margin: 0 0 10px 0px;
+  color: $black;
+}
+input:not([type=submit]):not([type=file]) {
+  // intentionally blank
+}
+
+input[type="number"] {
+  width: 55px;
+}
+
+::-webkit-input-placeholder {
+   color: $placeholder-color;
+}
+:-moz-placeholder { /* Firefox 18- */
+   color: $placeholder-color;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   color: $placeholder-color;
+}
+:-ms-input-placeholder {
+   color: $placeholder-color;
+}

@@ -1,13 +1,14 @@
 #grid {
   width: 40em;
   height: 30em;
-  border: 1px solid #000;
+  border: none;
   background: #fff url("../../assets/woodtexture7.jpg") repeat left top;
   padding: 2.5px;
   overflow: auto;
   margin-right: auto;
   margin-left: auto;
   margin-top: 1em;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 #grid .cell {
   background-color: transparent;
@@ -24,12 +25,62 @@
   padding-left: 25px;
 }
 
+.container {
+  float: left;
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid #226fbe;
+  background-color: #226fbe;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -ms-border-radius: 1px;
+  border-radius: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.over-wood {
+  position: absolute;
+}
+
+input {
+  border: 1px solid #226fbe;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 0 10px 0px;
+  color: #000;
+}
+
+input[type="number"] {
+  width: 55px;
+}
+
+::-webkit-input-placeholder {
+  color: #f2f2f2;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #f2f2f2;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #f2f2f2;
+}
+
+:-ms-input-placeholder {
+  color: #f2f2f2;
+}
+
 .cap, .sp-replacer.sp-light, .sp-replacer.sp-light:hover {
   width: 45px;
   height: 45px;
   margin: 2.5px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -ms-border-radius: 50px;
   border-radius: 50px;
-  background-color: green;
+  background-color: #17aa56;
 }
 
 .empty > .cap, .empty > .sp-replacer.sp-light {
@@ -59,9 +110,15 @@
   background-image: none;
   width: 37.5px;
   height: 37.5px;
+  -moz-border-radius: 37.5px;
+  -webkit-border-radius: 37.5px;
+  -ms-border-radius: 37.5px;
   border-radius: 37.5px;
 }
 .sp-replacer.sp-light .sp-preview .sp-preview-inner, .sp-replacer.sp-light:hover .sp-preview .sp-preview-inner {
+  -moz-border-radius: 37.5px;
+  -webkit-border-radius: 37.5px;
+  -ms-border-radius: 37.5px;
   border-radius: 37.5px;
 }
 
@@ -91,6 +148,10 @@
 
 .hidden {
   visibility: hidden;
+}
+
+body {
+  background-color: #4593e3;
 }
 
 /*# sourceMappingURL=style.css.map */

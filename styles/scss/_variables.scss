@@ -3,10 +3,34 @@ $buffer: $cap-diameter/20;
 // colors
 $black: #000;
 $white: #fff;
+$purple: #9e54bd;
+$purple-drk: #823aa0;
+$green: #2ac56c;
+$green-drk: #17aa56;
+$green-shadow: #119e4d;
+$blue:#4593e3;
+$blue-drk:#226fbe;
+$red: #f06060;
+$red-drk: #cb4e4e;
+$yellow: #fcd04b;
+$yellow-drk: #fcad26;
 $gray: #666;
 $gray-light: #999;
+// theme colors
+// $background-color: $purple;
+// $base-color: $purple-drk;//desaturate(#ECFFFF, 10%);
+// $background-color: $green;
+// $base-color: $green-drk;
+// $background-color: $red;
+// $base-color: $red-drk;
+// $background-color: $yellow;
+// $base-color: $yellow-drk;
+$background-color: $blue;
+$base-color: $blue-drk;
+$base-color-border: $base-color;//desaturate(darken($base-color, 20%), 60%);
+$placeholder-color: darken($white, 5%);
 $cell-color: transparent;
-$cap-color: green; // temp
+$cap-color: $green-drk; // temp
 $cap-selected-color: #F39814;
 $cap-active-color: #FECA40;
 $grid-background: "../../assets/woodtexture7.jpg";

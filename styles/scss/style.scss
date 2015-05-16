@@ -1,3 +1,4 @@
+@import "../bourbon/bourbon";
 @import "variables", "mixins", "grid";
 @import "inputs";
 @import "cap";
@@ -5,4 +6,8 @@
 
 .hidden {
   visibility: hidden;
+}
+
+body {
+  background-color: $background-color;
 }

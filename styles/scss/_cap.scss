@@ -1,0 +1,7 @@
+.cap {
+  display: block;
+  width: $cap-diameter - $cap-diameter/10;
+  height: $cap-diameter - $cap-diameter/10;
+  border-radius: $cap-diameter;
+  background-color: $cap-color;
+}

@@ -5,13 +5,12 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     sass: {
       dist: {
-        files: [{
-          expand: true,
-          cwd: 'styles',
-          src: ['**/*.scss'],
-          dest: 'styles/css',
-          ext: '.css'
-        }]
+        options: {
+          style: 'expanded'
+        },
+        files: {
+          'styles/css/style.css': 'styles/scss/style.scss'
+        }
       }
     },
     watch: {
@@ -21,7 +20,7 @@ module.exports = function(grunt) {
           reload: true
         }
       },
-      sass: {
+      scss: {
         files: ['**/*.scss'],
         tasks: ['sass'],
         options: {
@@ -38,7 +37,7 @@ module.exports = function(grunt) {
     //     dest: 'build/<%= pkg.name %>.min.js'
     //   }
     // }
-  })
+  });
 
   // Load the plugin that provides the "uglify" task.
   // grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -46,6 +45,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   // Default task(s).
   // grunt.registerTask('uglify', ['uglify']);
-  grunt.registerTask('default', ['watch','sass']);
+  grunt.registerTask('default', ['sass','watch']);
 
 };

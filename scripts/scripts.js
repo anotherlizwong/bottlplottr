@@ -17,11 +17,13 @@ function generateGrid() {
   var _y = parseInt($('#x').val());
 
   for (var i = 0; i <= _x; i++) {
-    if (i % 0 == 0) {
-      $('<div />').addClass('grid-offset').appendTo($("#grid"));
-    }
+
+    var row = $('<div />').addClass('row');
+
     for (var j = 0; j < _y; j++) {
-      $('<div />').addClass('grid-cell').attr('id', 'div' + i + '.' + j).appendTo($("#grid"));
+      $('<div />').addClass('cell').attr('id', 'div' + i + '.' + j).appendTo(row);
     }
+
+    row.appendTo($("#grid"));
   }
 }

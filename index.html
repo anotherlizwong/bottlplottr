@@ -20,7 +20,7 @@
 
 <div id="phil_dont_touch">
 
-  <button id="add_legend">Add Row</button>
+  <button id="add_legend"><i class="fa fa-plus-square-o"></i> Row</button>
 
   <form id="legend" action="#">
     <div class="color_input hidden">
@@ -28,21 +28,17 @@
       <input type="number" required placeholder="Count">
       <input name="hex" type="text" required>
       <input type="hidden"/>
-      <button class="color_delete" type="button">Delete</button>
+      <button class="color_delete" type="button"><i class="fa fa-times"></i></button>
     </div>
-    <button id="save_legend">Save</button>
   </form>
 
   <hr/>
 
   <form id="testform" action="#">
-    height (in feet)
-    <input type="number" id="x" required>
-    width (in feet)
-    <input type="number" id="y" required>
+    <input type="number" id="x" required placeholder="Length"> ft
+    <input type="number" id="y" required placeholder="Width"> ft
     <button id="create_grid">Create Grid</button>
   </form>
-  <button id="clear_grid">Clear Grid</button>
 
   <div class="selectable" id="grid">
 

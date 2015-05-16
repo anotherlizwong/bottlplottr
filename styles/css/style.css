@@ -217,7 +217,67 @@ button:hover {
   transition-duration: 0.2s;
 }
 
-.cap.summit, .summit.sp-replacer.sp-light {
+.cap.angryorchard, .angryorchard.sp-replacer.sp-light {
+  background: url("../../assets/caps/angryorchard.png");
+  background-size: contain;
+}
+.cap.breckenridge, .breckenridge.sp-replacer.sp-light {
+  background: url("../../assets/caps/breckenridge.png");
+  background-size: contain;
+}
+.cap.cocacola, .cocacola.sp-replacer.sp-light {
+  background: url("../../assets/caps/cocacola.png");
+  background-size: contain;
+}
+.cap.gooseisland, .gooseisland.sp-replacer.sp-light {
+  background: url("../../assets/caps/gooseisland.png");
+  background-size: contain;
+}
+.cap.guiness-bottl, .guiness-bottl.sp-replacer.sp-light {
+  background: url("../../assets/caps/guiness-bottl.png");
+  background-size: contain;
+}
+.cap.guinness, .guinness.sp-replacer.sp-light {
+  background: url("../../assets/caps/guinness.png");
+  background-size: contain;
+}
+.cap.hofbrauhaus, .hofbrauhaus.sp-replacer.sp-light {
+  background: url("../../assets/caps/hofbrauhaus.png");
+  background-size: contain;
+}
+.cap.hooker, .hooker.sp-replacer.sp-light {
+  background: url("../../assets/caps/hooker.png");
+  background-size: contain;
+}
+.cap.killians-irishred, .killians-irishred.sp-replacer.sp-light {
+  background: url("../../assets/caps/killians-irishred.png");
+  background-size: contain;
+}
+.cap.michelob-lager, .michelob-lager.sp-replacer.sp-light {
+  background: url("../../assets/caps/michelob-lager.png");
+  background-size: contain;
+}
+.cap.miller-draft, .miller-draft.sp-replacer.sp-light {
+  background: url("../../assets/caps/miller-draft.png");
+  background-size: contain;
+}
+.cap.millerlight-gold, .millerlight-gold.sp-replacer.sp-light {
+  background: url("../../assets/caps/millerlight-gold.png");
+  background-size: contain;
+}
+.cap.samadams-light, .samadams-light.sp-replacer.sp-light {
+  background: url("../../assets/caps/samadams-light.png");
+  background-size: contain;
+}
+.cap.samadams-seasonal, .samadams-seasonal.sp-replacer.sp-light {
+  background: url("../../assets/caps/samadams-seasonal.png");
+  background-size: contain;
+}
+.cap.stellaartois, .stellaartois.sp-replacer.sp-light {
+  background: url("../../assets/caps/stellaartois.png");
+  background-size: contain;
+}
+.cap.summit-bohemian, .summit-bohemian.sp-replacer.sp-light {
   background: url("../../assets/caps/summit-bohemian.png");
   background-size: contain;
 }

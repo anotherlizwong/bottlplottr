@@ -1,5 +1,50 @@
 .cap{
-  &.summit {
+  &.angryorchard {
+    @include bg-image("angryorchard");
+  }
+  &.breckenridge {
+    @include bg-image("breckenridge");
+  }
+  &.cocacola {
+    @include bg-image("cocacola");
+  }
+  &.gooseisland {
+    @include bg-image("gooseisland");
+  }
+  &.guiness-bottl {
+    @include bg-image("guiness-bottl");
+  }
+  &.guinness {
+    @include bg-image("guinness");
+  }
+  &.hofbrauhaus {
+    @include bg-image("hofbrauhaus");
+  }
+  &.hooker {
+    @include bg-image("hooker");
+  }
+  &.killians-irishred {
+    @include bg-image("killians-irishred");
+  }
+  &.michelob-lager {
+    @include bg-image("michelob-lager");
+  }
+  &.miller-draft {
+    @include bg-image("miller-draft");
+  }
+  &.millerlight-gold {
+    @include bg-image("millerlight-gold");
+  }
+  &.samadams-light {
+    @include bg-image("samadams-light");
+  }
+  &.samadams-seasonal {
+    @include bg-image("samadams-seasonal");
+  }
+  &.stellaartois {
+    @include bg-image("stellaartois");
+  }
+  &.summit-bohemian {
     @include bg-image("summit-bohemian");
   }
   &.traveler {

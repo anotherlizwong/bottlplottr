@@ -1,0 +1,44 @@
+.cap{
+  &.summit {
+    @include bg-image("summit-bohemian");
+  }
+  &.traveler {
+    @include bg-image("traveler");
+  }
+  &.smithwicks {
+    @include bg-image("smithwicks");
+  }
+  &.shipyard-anniversary {
+    @include bg-image("shipyard-anniversary");
+  }
+  &.corona-extra {
+    @include bg-image("corona-extra");
+  }
+  &.kona-yellow {
+    @include bg-image("kona-yellow");
+  }
+  &.batch19 {
+    @include bg-image("batch19");
+  }
+  &.newportstorm {
+    @include bg-image("newportstorm");
+  }
+  &.oldeenglish800 {
+    @include bg-image("oldeenglish800");
+  }
+  &.zywiec {
+    @include bg-image("zywiec");
+  }
+  &.smirnoff-red {
+    @include bg-image("smirnoff-red");
+  }
+  &.smirnoff-blue {
+    @include bg-image("smirnoff-blue");
+  }
+  &.smirnoff-burgandy {
+    @include bg-image("smirnoff-burgandy");
+  }
+  &.samadams {
+    @include bg-image("samadams");
+  }
+}

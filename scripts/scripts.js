@@ -72,9 +72,19 @@ function clearInput() {
   $('#testform')[0].reset();
 }
 
+var CAP_PERIMITER = 1.4;
+
 function generateGrid() {
-  var _y = parseInt($('#y').val());
-  var _x = parseInt($('#x').val());
+  var height = parseInt($('#y').val()); // height
+  var width = parseInt($('#x').val()); // width
+
+  console.log(height * 12 + "inches");
+  console.log(width  * 12 + "inches");
+
+  var _y = Math.round((height*12)/CAP_PERIMITER);
+  var _x = Math.round((width*12)/CAP_PERIMITER);
+
+  var count = 0;
 
   for (var i = 0; i < _y; i++) {
 
@@ -84,10 +94,14 @@ function generateGrid() {
       var cap = $('<div />').addClass('cap').addClass('ui-widget-content');
       var cell = $('<div />').addClass('cell').attr('id', 'div' + i + '-' + j);
 
+      count++;
+
       cap.appendTo(cell);
       cell.appendTo(row);
     }
 
     row.appendTo($("#grid"));
   }
+
+  console.log("There are " + count + " free cap spots");
 }

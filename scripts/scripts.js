@@ -52,18 +52,6 @@ $(document).ready(function () {
   });
 
 
-  //$(".selectable").selectable({
-  //  selected: function (event, ui) {
-  //    if ($(ui.selected).hasClass('selectedfilter')) {
-  //      $(ui.selected).removeClass('selectedfilter').removeClass('ui-selected');
-  //      // do unselected stuff
-  //    } else {
-  //      $(ui.selected).addClass('selectedfilter').addClass('ui-selected');
-  //      // do selected stuff
-  //    }
-  //  }
-  //});
-
 });
 
 function addColor() {

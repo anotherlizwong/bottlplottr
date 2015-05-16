@@ -21,24 +21,28 @@
   &:hover {
     @include material-shadow(1);
     @include transform(translateY(0px));
+    @include transition();
   }
 }
 @if $level == 1 {
   &:hover {
     @include material-shadow(2);
     @include transform(translateY(-2px));
+    @include transition();
   }
 }
 @if $level == 2 {
   &:hover {
     @include material-shadow(3);
     @include transform(translateY(-5px));
+    @include transition();
   }
 }
 @if $level == 3 {
   &:hover {
     @include material-shadow(4);
     @include transform(translateY(-8px));
+    @include transition();
   }
 }
 }

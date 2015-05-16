@@ -212,6 +212,9 @@ button:hover {
   -ms-transform: translateY(-5px);
   -o-transform: translateY(-5px);
   transform: translateY(-5px);
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 
 .selectable .ui-selecting {
@@ -225,7 +228,6 @@ button:hover {
 
 .selectable {
   padding: 10em;
-  width: 100%;
 }
 .selectable::after {
   clear: both;

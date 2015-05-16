@@ -57,16 +57,16 @@ $(document).ready(function () {
     deleteColorFromLegend(id);
   });
 
-  $(document).on("click", ".color_delete", function (event) {
-    $(this).closest('form').remove();
-  });
+  //$(document).on("click", ".color_delete", function (event) {
+  //  $(this).closest('form').remove();
+  //});
 
   addColor();
 
   generateGridInternal(1, 1, 1, 1);
 
-  addColorToLegend(new Color("test", "5e3a3a", 10, 0));
-  addColorToLegend(new Color("test2", "111111", 10, 1));
+  //addColorToLegend(new Color("test", "5e3a3a", 10, 0));
+  //addColorToLegend(new Color("test2", "111111", 10, 1));
 
   $(".selectable").selectable({
     filter: ".cap"
@@ -80,15 +80,23 @@ function addColorToLegend(color) {
   legend[color.id] = color;
 
   console.log("saved " + color.id + " to dictionary");
+
+  $(".cap"+color.id).css('background-color', '#' + color.hex);
+
 }
 
 function deleteColorFromLegend(id) {
+
+  // remove the caps from the board;
 
   delete legend[id.val()];
 
   console.log("removed id " + id + " from dictionary");
 
+  $(".cap"+id.val()).css('background-color', '').removeClass("cap"+id.val()).addClass('empty');
+
 }
+
 
 function addColor() {
   var newguy = $('.color_input').clone();

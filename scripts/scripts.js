@@ -22,8 +22,28 @@ function Color(name, hex, count, id) {
   this.decrement = function () {
     this.count = this.count - 1;
   }
+
+  this.toString = function () {
+    return "id[" + id + "], name[" + name + "], hex[" + hex + "], count[" + count + "]";
+  }
 }
+
 $(document).ready(function () {
+
+  $(document).bind("logEvent", function (e, adjustment, myValue) {
+    var x;
+    for (x in legend) {
+      console.log(legend[x].toString());
+    }
+  });
+
+  /**
+   * howManyFewerSpots tells us how many spots fewer there are on the board. Pass a negative number to indicate there are more spots
+   */
+  $('.overall-total').bind('legendUpdated', function (e, howManyFewerSpots) {
+    var value = $(this).find("#tot_remaining");
+    value.text(parseInt(value.text()) - howManyFewerSpots);
+  });
 
   $('#testform').submit(function (event) {
     clearGrid();
@@ -37,21 +57,28 @@ $(document).ready(function () {
   });
 
   //handle the events in every element. Only applies to elements which can be handle focus
-  $(document).keydown(function(event) {
-        if ( event.which == 100 || event.wich == 8 || event.which == 46 ) { //this is the keycode. 100 is the 'd' key. The delete key is difficult to bind.
-          resetStyles($(".ui-selected"));
-      }
-    });
+  $(document).keydown(function (event) {
+    if (event.wich == 8 || event.which == 46) { //100 is the 'd' key. The delete key is difficult to bind.
+      resetStyles($(".ui-selected"));
+    }
+  });
 
-   // reset the styles to empty
-   var resetStyles = function(elem) {
+  // reset the styles to empty
+  var resetStyles = function (elem) {
     var regEx = /cap[0-9]+/;
     $.each(elem, function (index, value) {
       var el = value;
       el.removeAttribute("style");
       var elClassName = el.className.match(regEx);
+
+      if (elClassName) {
+        var foreignCapId = elClassName[0].substring(3);
+        legend[foreignCapId].count = legend[foreignCapId].count + 1;
+        $('#form' + foreignCapId).trigger("legendUpdated", foreignCapId);
+        $('.overall-total').trigger('legendUpdated', -1);
+      }
       el.className = el.className.replace(regEx, 'empty');
-      el.className = el.className.replace('ui-selected','');
+      el.className = el.className.replace('ui-selected', '');
     });
     // elem.addClass("empty");
     return elem.size();
@@ -100,7 +127,7 @@ function addColorToLegend(color) {
 
   console.log("saved " + color.id + " to dictionary");
 
-  $(".cap"+color.id).css('background-color', '#' + color.hex);
+  $(".cap" + color.id).css('background-color', '#' + color.hex);
 
 }
 
@@ -108,23 +135,32 @@ function deleteColorFromLegend(id) {
 
   // remove the caps from the board;
 
+  $('.overall-total').trigger('legendUpdated', -legend[id.val()].count);
+
   delete legend[id.val()];
 
   console.log("removed id " + id + " from dictionary");
 
-  $(".cap"+id.val()).css('background-color', '').removeClass("cap"+id.val()).addClass('empty');
+  $(".cap" + id.val()).css('background-color', '').removeClass("cap" + id.val()).addClass('empty');
+
 
 }
 
 
 function addColor() {
+  var colorId = COLOR_ID_SEQ++;
   var newguy = $('.color_input').clone();
   newguy.removeClass("hidden");
   newguy.removeClass("color_input");
+  newguy.attr('id', 'form' + colorId);
   newguy.find("[name=hex]").spectrum();
   newguy.find(".color_edit").addClass("hidden");
-  newguy.find("[name=id]").val(COLOR_ID_SEQ++);
+  newguy.find("[name=id]").val(colorId);
   newguy.appendTo($('#legend'));
+
+  newguy.bind("legendUpdated", function (e, myName, myValue) {
+    $(this).find("[name=number]").val(legend[myName].count)
+  });
 
   newguy.submit(function (event) {
     newguy.find(".color_save").addClass("hidden");
@@ -144,13 +180,12 @@ function addColor() {
     return false;
   });
 
-  // when deleted, it must delete.
-  // when save is done, repaint automatically.
-  // make sure count is still valid for all parties included.
-
-
   newguy.find(".color_paint").click(function (event) {
+
     var id = newguy.find("[name=id]").val();
+
+    if(!legend[id]) return;
+
     var hex = legend[id].hex;
 
     var count = $(".ui-selected").length;
@@ -158,25 +193,22 @@ function addColor() {
     // add the color of the current cap
     $(".ui-selected").css('background-color', '#' + hex);
 
-    console.log(legend[0].count);
     // go throug the current caps and return their tokens
     $(".ui-selected").each(function (i, object) {
 
       var classToRemove;
-      $(object.classList).each(function(j, o){
+      $(object.classList).each(function (j, o) {
         if (o.indexOf("cap") > -1 && o.length > 3) {
           classToRemove = o;
-          legend[o.substring(3)].count = legend[o.substring(3)].count + 1;
+          var foreignCapId = o.substring(3);
+          legend[foreignCapId].count = legend[foreignCapId].count + 1;
+          $('#form' + foreignCapId).trigger("legendUpdated", foreignCapId);
+          $('.overall-total').trigger('legendUpdated', -1);
         }
       });
 
       $(object).removeClass(classToRemove);
 
-      //// MAKING AN ASSUMPTION THAT THE STYLE IS FIRST. Poor form, i dont' care
-      //var capId = object.classList[0].split('-')[1];
-      //if(capId != undefined) {
-      //  legend[capId].count = legend[capId] + 1;
-      //}
     });
 
 
@@ -189,18 +221,24 @@ function addColor() {
 
     // update the pointers;
     legend[id].count = legend[id].count - count;
-    console.log(legend[0].count);
+
+    $('.overall-total').trigger('legendUpdated', count);
+
+    $('#form' + id).trigger("legendUpdated", id);
+
+    $(document).trigger("logEvent");
+
   });
 
-newguy.find(".color_edit").click(function (event) {
-  newguy.find(".color_save").removeClass("hidden");
-  newguy.find(".color_edit").addClass("hidden");
-  newguy.find("[name=name]").attr('readonly', false);
-  newguy.find("[name=hex]").attr('disabled', false);
-  newguy.find("[name=hex]").spectrum({disabled: false});
-  newguy.find("[name=number]").attr('readonly', false);
+  newguy.find(".color_edit").click(function (event) {
+    newguy.find(".color_save").removeClass("hidden");
+    newguy.find(".color_edit").addClass("hidden");
+    newguy.find("[name=name]").attr('readonly', false);
+    newguy.find("[name=hex]").attr('disabled', false);
+    newguy.find("[name=hex]").spectrum({disabled: false});
+    newguy.find("[name=number]").attr('readonly', false);
 
-});
+  });
 }
 
 // GRID FUNCTIONS
@@ -231,6 +269,11 @@ function generateGrid() {
 
 }
 
+// When the reset table button is clicked, return the caps on the board to their proper place in the legend
+function returnLegendCapsBack() {
+  //todo
+}
+
 function generateGridInternal(height, height_in, width, width_in) {
   var tot_height_in = height * 12 + height_in;
   var tot_width_in = width * 12 + width_in;
@@ -239,6 +282,8 @@ function generateGridInternal(height, height_in, width, width_in) {
 
   var _y = Math.floor((tot_height_in) / CAP_PERIMITER);
   var _x = Math.floor((tot_width_in - CAP_GAP) / CAP_PERIMITER);
+
+  returnLegendCapsBack();
 
   var count = 0;
   var width = 0;
@@ -266,7 +311,6 @@ function generateGridInternal(height, height_in, width, width_in) {
   $("#grid").css("width", width);
   $("#grid").css("height", height);
 
-  console.log("There are " + count + " free cap spots");
   $("#tot_avail").text(count);
   $("#tot_remaining").text(count);
 };

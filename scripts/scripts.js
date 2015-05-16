@@ -9,11 +9,11 @@ function color(name, hex, count) {
   this.color = color;
   this.hex = hex;
   this.count = count;
-  this.increment = function() {
+  this.increment = function () {
     this.count = this.count + 1;
   };
 
-  this.decrement = function() {
+  this.decrement = function () {
     this.count = this.count - 1;
   }
 }
@@ -21,11 +21,13 @@ function color(name, hex, count) {
 $(document).ready(function () {
 
   $('#testform').submit(function (event) {
+    clearGrid();
     generateGrid();
+    clearInput();
   });
 
-  $('#clear_grid').click(function(event) {
-
+  $('#clear_grid').click(function (event) {
+    clearGrid();
   });
 });
 
@@ -40,6 +42,10 @@ function clearGrid() {
   $("#grid").empty();
 }
 
+function clearInput() {
+  $('#testform')[0].reset();
+}
+
 function generateGrid() {
   var _x = parseInt($('#x').val());
   var _y = parseInt($('#x').val());
@@ -49,7 +55,11 @@ function generateGrid() {
     var row = $('<div />').addClass('row');
 
     for (var j = 0; j < _y; j++) {
-      $('<div />').addClass('cell').attr('id', 'div' + i + '.' + j).appendTo(row);
+      var cap = $('<div />').addClass('cap');
+      var cell = $('<div />').addClass('cell').attr('id', 'div' + i + '-' + j);
+
+      cap.appendTo(cell);
+      cell.appendTo(row);
     }
 
     row.appendTo($("#grid"));

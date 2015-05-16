@@ -4,15 +4,24 @@ function bottle_cap(color) {
     return "I'm a bottle cap of color " + this.color;
   };
 }
+
+$(document).ready(function () {
+
+  $('#testform').submit(function (event) {
+    generateGrid();
+  });
+});
+
 function generateGrid() {
-  var _x = $('x').value;
-  var _y = $('y').value;
+  var _x = parseInt($('#x').val());
+  var _y = parseInt($('#x').val());
 
   for (var i = 0; i <= _x; i++) {
+    if (i % 0 == 0) {
+      $('<div />').addClass('grid-offset').appendTo($("#grid"));
+    }
     for (var j = 0; j < _y; j++) {
-      if (j % 0 == 0) {
-        $('<div />').addClass('sameDiv').attr('id', 'div' + i).appendTo('body');
-      }
+      $('<div />').addClass('grid-cell').attr('id', 'div' + i + '.' + j).appendTo($("#grid"));
     }
   }
 }

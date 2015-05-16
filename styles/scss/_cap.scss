@@ -5,6 +5,9 @@
   @include border-radius($cap-diameter);
   background-color: $cap-color;
   // border: 10px dotted white;
+  &:hover {
+    opacity: .8;
+  }
   &.empty {
     background-color: $white;
     opacity: .15;

@@ -63,8 +63,23 @@ input:focus {
   transition-duration: 0.2s;
 }
 
-input[type="number"] {
+input[type="number"], .number-field {
   width: 80px;
+  text-align: right;
+}
+
+.text-field {
+  width: 241px;
+}
+
+.number-field, .text-field {
+  padding: 1em;
+  font-size: 1.2em;
+  float: left;
+}
+
+.total {
+  margin: 0 .5em;
 }
 
 ::-webkit-input-placeholder {
@@ -115,6 +130,9 @@ button:hover {
   -ms-border-radius: 50px;
   border-radius: 50px;
   background-color: #17aa56;
+}
+.cap:hover, .sp-replacer.sp-light:hover {
+  opacity: .8;
 }
 .cap.empty, .empty.sp-replacer.sp-light {
   background-color: #fff;

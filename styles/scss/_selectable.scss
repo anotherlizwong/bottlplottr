@@ -1,0 +1,17 @@
+.selectable .ui-selecting {
+  @exends .cap;
+  background: $cap-active-color;
+}
+
+.selectable  .ui-selected {
+  background: $cap-selected-color;
+  color: $white;
+  @extends .cap;
+}
+
+.selectable  {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 60%;
+}

@@ -9,49 +9,11 @@
   <script src="scripts/jquery-ui.js"></script>
   <script src="scripts/spectrum.js"></script>
   <script src="scripts/scripts.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="styles/css/style.css">
   <link rel="stylesheet" type="text/css" href="styles/spectrum.css">
   <link rel="stylesheet" type="text/css" href="styles/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="styles/jquery-ui.structure.css">
-  <style type="text/css">
-
-
-  </style>
-
-  <style>
-    .selectable .ui-selecting {
-      background: #FECA40;
-      width: 135px;
-      height: 135px;
-      border-radius: 150px;
-    }
-
-    .selectable  .ui-selected {
-      background: #F39814;
-      color: white;
-      width: 135px;
-      height: 135px;
-      border-radius: 150px;
-    }
-
-    .selectable  {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      width: 60%;
-    }
-
-    /*.selectable  li {*/
-      /*margin: 3px;*/
-      /*padding: 0.4em;*/
-      /*font-size: 1.4em;*/
-      /*height: 18px;*/
-    /*}*/
-    .hidden {
-      visibility: hidden;
-    }
-  </style>
-
 
 </head>
 <body>
@@ -62,9 +24,9 @@
 
   <form id="legend" action="#">
     <div class="color_input hidden">
-      <label>Name</label><input type="text" required>
-      <label>Hex</label><input name="hex" type="text" required>
-      <label>Count</label> <input  type="number" required>
+      <input type="text" required placeholder="Cap Name">
+      <input type="number" required placeholder="Count">
+      <input name="hex" type="text" required>
       <input type="hidden"/>
       <button class="color_delete" type="button">Delete</button>
     </div>

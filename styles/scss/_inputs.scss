@@ -54,7 +54,7 @@ input + .total {
   &:before {
     content: '/';
     padding-right: .5em;
-    padding-left: .5em;
+    padding-left: 0em;
   }
 }
 input:read-only + .total {

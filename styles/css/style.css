@@ -5,9 +5,9 @@
   background: #fff url("../../assets/woodtexture7.jpg") repeat left top;
   padding: 2.5px;
   overflow: hidden;
-  margin-right: 10%;
-  margin-left: 10%;
-  margin-top: 1em;
+  margin: 1em auto;
+  clear: both;
+  float: left;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 #grid .cell {
@@ -97,7 +97,7 @@ input + .total {
 input + .total:before {
   content: '/';
   padding-right: .5em;
-  padding-left: .5em;
+  padding-left: 0em;
 }
 
 input:read-only + .total {

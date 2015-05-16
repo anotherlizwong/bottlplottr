@@ -63,6 +63,7 @@ $(document).ready(function () {
   generateGridInternal(1,1,1,1);
 
   addColorToLegend(new Color("test", "5e3a3a", 10, 0));
+  addColorToLegend(new Color("test2", "111111", 10, 1));
 
   $("#grid").selectable({
     filter: ".cap"
@@ -113,23 +114,26 @@ function addColor() {
     return false;
   });
 
+  // when deleted, it must delete.
+  // when over
+  // when save is done, repaint automatically.
+  // make sure count is still valid for all parties included.
+
+
   newguy.find(".color_paint").click(function(event){
     var id = newguy.find("[name=id]").val();
     var hex = legend[id].hex;
 
     var count = $(".ui-selected").length;
+
     // add the color of the current cap
-    console.log($(".ui-selected").length);
     $(".ui-selected").css('background-color', '#'+hex);
-    console.log($(".ui-selected").length);
+
     // assign this square to the selected cap
     $(".ui-selected").addClass("cap" + id);
-    console.log($(".ui-selected").length);
 
     // remove the current selections
     $(".ui-selected").removeClass("empty").removeClass("ui-selected");
-    console.log($(".ui-selected").length);
-
 
     // update the pointers;
     legend[id].count = legend[id].count - count;

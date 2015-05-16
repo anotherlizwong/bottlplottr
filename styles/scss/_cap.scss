@@ -1,6 +1,7 @@
 .cap {
-  width: $cap-diameter - $buffer;
-  height: $cap-diameter - $buffer;
+  width: $cap-diameter - $buffer*2;
+  height: $cap-diameter - $buffer*2;
+  margin: $buffer;
   border-radius: $cap-diameter;
   background-color: $cap-color;
   // border: 10px dotted white;

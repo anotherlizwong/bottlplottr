@@ -9,29 +9,39 @@
   <script src="scripts/jquery-ui.js"></script>
   <script src="scripts/spectrum.js"></script>
   <script src="scripts/scripts.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="styles/css/style.css">
   <link rel="stylesheet" type="text/css" href="styles/spectrum.css">
   <link rel="stylesheet" type="text/css" href="styles/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="styles/jquery-ui.structure.css">
+<style type="text/css">
 
+  .foobar{
+    border: none;
+    background: transparent;
+    color: #000;
+  }
+
+
+</style>
 </head>
 <body>
 
 <div id="phil_dont_touch">
 
   <button id="add_legend"><i class="fa fa-plus-square-o"></i> Row</button>
-
-  <form id="legend" action="#">
-    <div class="color_input hidden">
-      <input type="text" required placeholder="Cap Name">
-      <input type="number" required placeholder="Count">
-      <input name="hex" type="text" required>
+  <div id="legend">
+    <form class="color_input hidden" action="#">
+      <input type="text" name="name" required placeholder="Cap Name">
+      <input type="number" name="number" required placeholder="Count">
+      <input type="text" name="hex" >
       <input type="hidden"/>
-      <button class="color_delete" type="button"><i class="fa fa-trash-o"></i></button>
-    </div>
-  </form>
-
+      <button class="color_delete" type="button"><i class="fa fa-close"></i></button>
+      <button class="color_save" type="submit"><i class="fa fa-check"></i></button>
+      <button class="color_edit" type="button"><i class="fa fa-edit"></i></button>
+    </form>
+  </div>
   <hr/>
 
   <form id="testform" action="#">

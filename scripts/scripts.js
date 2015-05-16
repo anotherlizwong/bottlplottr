@@ -29,6 +29,7 @@ $(document).ready(function () {
     $("#grid").selectable({
       filter: ".cap"
     });
+    return false;
   });
 
   $('#clear_grid').click(function (event) {
@@ -44,11 +45,11 @@ $(document).ready(function () {
   });
 
   $(document).on("click", ".color_delete", function (event) {
-    $(this).closest('div').remove();
+    $(this).closest('form').remove();
   });
 
-  $(document).on("click", ".color_add", function (event) {
-    $(this).closest('div').remove();
+  $(document).on("click", ".color_delete", function (event) {
+    $(this).closest('form').remove();
   });
 
   addColor();
@@ -60,7 +61,22 @@ function addColor() {
   newguy.removeClass("hidden");
   newguy.removeClass("color_input");
   newguy.find("[name=hex]").spectrum();
+  newguy.find(".color_edit").addClass("hidden");
   newguy.appendTo($('#legend'));
+
+  newguy.submit(function (event) {
+    newguy.find(".color_save").addClass("hidden");
+    newguy.find(".color_edit").removeClass("hidden");
+    newguy.find("[name=name]").prop('readonly', true).addClass("foobar");
+    return false;
+  });
+
+  newguy.find(".color_edit").click(function(event) {
+    debugger;
+    newguy.find(".color_save").removeClass("hidden");
+    newguy.find(".color_edit").addClass("hidden");
+    newguy.find("[name=name]").removeProp('readonly').removeClass("foobar");
+  });
 }
 
 // GRID FUNCTIONS

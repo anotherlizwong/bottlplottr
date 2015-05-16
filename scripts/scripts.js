@@ -97,7 +97,17 @@ $(document).ready(function () {
   $(".selectable").selectable({
     filter: ".cap"
   });
-});
+
+  // var capData;
+  // $.getJSON('../assets/caps/caps.json',function(data){
+  //   console.log('success getting caps from json');
+  //   // $.each(data.caps,function(i,cap){
+  //   //   $('ul').append('<li>'+cap.name+' '+cap.filename+'</li>');
+  //   // });
+  //   capData = data;
+  // }).error(function(){
+  //   console.log('error');
+  // });
 
 function bottle_cap(color) {
   this.color = color;
@@ -312,3 +322,4 @@ function generateGridInternal(height, height_in, width, width_in) {
   $("#tot_avail").text(count);
   $("#tot_remaining").text(count);
 };
+});

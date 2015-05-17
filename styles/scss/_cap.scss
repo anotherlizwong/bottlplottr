@@ -19,38 +19,38 @@
 }
 
 // override color picker to make it a cap
-// $micro-cap: $cap-diameter*.75;
-// .sp-replacer.sp-light, .sp-replacer.sp-light:hover {
-//   @extend .cap;
-//   @include material-shadow(2);
-//   width: $micro-cap;
-//   height: $micro-cap;
-//   padding: inherit;
-//   background-color: transparent;
-//   border: none;
-//   &.sp-active {
-//     border-color: transparent;
-//   }
-//   .sp-dd {
-//     display: none;
-//   }
-//   .sp-preview {
-//     background-image: none;
-//     width: $micro-cap;
-//     height: $micro-cap;
-//     @include border-radius($micro-cap);
-//     .sp-preview-inner {
-//       @include border-radius($micro-cap);
-//     }
-//   }
-// }
-// .sp-replacer.sp-light:hover {
-  // @include material-shadow(4);
-  // @include material-hover(2);
-  // top: -5px;
+$micro-cap: $cap-diameter*.75;
+.sp-replacer.sp-light, .sp-replacer.sp-light:hover {
+  @extend .cap;
+  @include material-shadow(2);
+  width: $micro-cap;
+  height: $micro-cap;
+  padding: inherit;
+  background-color: transparent;
+  border: none;
+  &.sp-active {
+    border-color: transparent;
+  }
+  .sp-dd {
+    display: none;
+  }
+  .sp-preview {
+    background-image: none;
+    width: $micro-cap;
+    height: $micro-cap;
+    @include border-radius($micro-cap);
+    .sp-preview-inner {
+      @include border-radius($micro-cap);
+    }
+  }
+}
+.sp-replacer.sp-light:hover {
+  @include material-shadow(4);
+  @include material-hover(2);
+  top: -5px;
 }
 // .sp-replacer.sp-light.sp-disabled:hover {
-//   @include material-shadow(2);
-//   @include material-hover(0);
-//   top: 0px;
+  // @include material-shadow(2);
+  // @include material-hover(0);
+  // top: 0px;
 // }

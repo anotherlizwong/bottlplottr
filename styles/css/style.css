@@ -66,10 +66,6 @@
   content: "\f0a9";
 }
 
-.over-wood {
-  position: absolute;
-}
-
 input {
   border: 1px solid #226fbe;
   padding: 15px;
@@ -88,9 +84,6 @@ input:focus {
 input[type="number"], .number-field {
   width: 85px;
   text-align: right;
-}
-input[type="number"]:read-only, .number-field:read-only {
-  padding-right: 0px;
 }
 
 .text-field {

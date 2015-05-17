@@ -4,7 +4,7 @@ var legendEntrySubmit = function (event) {
 
   var name = $(this).find("[name=name]").val();
   var count = parseInt($(this).find("[name=number]").val());
-  var hex = $(this).find("[name=hex]").spectrum("get").toHex();
+  var hex = $(this).find(".foo > [name=hex]").spectrum("get").toHex();
   var id = $(this).find("[name=id]").val();
   var color = new Color(name, hex, count, id);
 
@@ -19,14 +19,20 @@ function triggerLegendFormFields(form, hide) {
     form.find(".edit").removeClass("hidden");
     form.find("[name=name]").attr('readonly', true);
     form.find("[name=number]").attr('readonly', true);
-    form.find("[name=hex]").spectrum({disabled: true});
+
+
+    form.find(".foo > [name=hex]").spectrum({disabled: true});
+    form.find(".foo > .hovering_div").css('width',40);
+
   } else {
     form.find(".save").removeClass("hidden");
     form.find(".edit").addClass("hidden");
     form.find("[name=name]").attr('readonly', false);
     form.find("[name=number]").attr('readonly', false);
-    form.find("[name=hex]").attr('disabled', false);
-    form.find("[name=hex]").spectrum({disabled: false});
+    form.find(".foo > [name=hex]").attr('disabled', false);
+    form.find(".foo > [name=hex]").spectrum({disabled: false});
+
+    form.find(".foo > .hovering_div").css('width',0);
   }
 }
 
@@ -44,13 +50,17 @@ var legendEntryPaint = function (event) {
   // if we try to paint with a legend entry that isn't ready, don't bother
   if (!legend[id]) return;
 
+  //if edit mode do nothing, we want to have the click be used configure the hex picker
+  if( !form.find(".save").hasClass("hidden")) return;
+
+
   var selected = $(".ui-selected");
 
   var hex = legend[id].hex;
   var count = selected.length;
 
   // add the color of the current cap
-  selected.css('background-color', '#' + hex);
+  selected.css('background', '#' + hex);
 
   // go throug the current caps and return their tokens
   selected.each(function (i, object) {
@@ -90,7 +100,7 @@ function addLegendEntry() {
   legendEntry.removeClass("color_input");
   legendEntry.attr('id', 'form' + colorId);
   legendEntry.find(".edit").addClass("hidden");
-  legendEntry.find("[name=hex]").spectrum();
+  legendEntry.find(".foo > [name=hex]").spectrum();
   legendEntry.find("[name=id]").val(colorId);
   legendEntry.appendTo($('#legend'));
 
@@ -100,6 +110,7 @@ function addLegendEntry() {
 
   legendEntry.submit(legendEntrySubmit);
   legendEntry.find(".edit").click(legendEntryEdit);
-  legendEntry.find(".color_paint").click(legendEntryPaint);
+  //legendEntry.find(".color_paint").click(legendEntryPaint);
+  legendEntry.find(".foo > .hovering_div").click(legendEntryPaint);
 
 }

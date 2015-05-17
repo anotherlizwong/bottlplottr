@@ -6,6 +6,7 @@
   <script src="scripts/jquery-2.1.4.js"></script>
   <script src="scripts/jquery.event.drag-2.2.js"></script>
   <script src="scripts/jquery.event.drop-2.2.js"></script>
+  <script src="scripts/jquery.event.drop-2.2.js"></script>
   <script src="scripts/jquery-ui.js"></script>
   <script src="scripts/spectrum.js"></script>
   <script src="scripts/caps.js"></script>
@@ -15,16 +16,32 @@
   <script src="scripts/scripts.js"></script>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="styles/css/style.css">
+  <link rel="stylesheet" type="text/css" href="styles/jquery-ui.theme.css">
   <link rel="stylesheet" type="text/css" href="styles/spectrum.css">
   <link rel="stylesheet" type="text/css" href="styles/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="styles/jquery-ui.structure.css">
 
+
+  <style type="text/css">
+
+    .test {
+      display:none;
+    }
+
+    .untest {
+      display:inherit;
+    }
+
+
+  </style>
 </head>
 <body>
 
   <div>
 
-    <div class="container">
+    <div id="test2" class="container">
+      <button id="#toggle" type="button">ss<i class="fa fa-arrow-left"></i></button>
+
       <div class="overall-total">
         <div class="text-field">Total Spaces Remaining</div><div class="number-field"><span class="total" id="tot_remaining"></span><span class="total" id="tot_avail"></span></div>
       </div>
@@ -52,7 +69,10 @@
 <form class="color_input hidden" action="#">
   <input class="auto-complete-name" type="text" name="name" required placeholder="Cap Name">
   <input type="number" name="number" required placeholder="Count"><span class="total"></span>
-  <input name="hex" type="text" value="black">
+  <span class="foo" style="height:45px; width:45px;position:relative;">
+    <input name="hex" type="text" value="black">
+    <div class="hovering_div" style="display: block;width: 0px;height: 40px;position: absolute;top: 0;left: 0;"></div>
+  </span>
   <input name="id" type="hidden"/>
   <button class="save" type="submit"><i class="fa fa-check"></i></button>
   <button class="edit" type="button"><i class="fa fa-edit"></i></button>
@@ -62,3 +82,4 @@
 
 </body>
 </html>
+});

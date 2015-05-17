@@ -135,6 +135,12 @@ $(document).ready(function () {
       }
   });
 
+
+  $( "#toggle" ).click(function() {
+    $( "#test2" ).toggle( "slide" );
+  });
+
+
 });
 
 

@@ -28,10 +28,6 @@
   }
 }
 
-.over-wood {
-  position: absolute;
-}
-
 input {
   border: 1px solid $base-color-border;
   padding: 15px;
@@ -51,9 +47,6 @@ input:not([type=submit]):not([type=file]) {
 input[type="number"],.number-field {
   width: 85px;
   text-align: right;
-  &:read-only {
-    padding-right:0px;
-  }
 }
 .text-field {
   width: 241px;

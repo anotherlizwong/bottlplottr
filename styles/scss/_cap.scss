@@ -4,7 +4,6 @@
   margin: $buffer;
   @include border-radius($cap-diameter);
   background-color: $cap-color;
-  // border: 10px dotted white;
   &:hover {
     opacity: .8;
   }
@@ -49,8 +48,3 @@ $micro-cap: $cap-diameter*.75;
   @include material-hover(2);
   top: -5px;
 }
-// .sp-replacer.sp-light.sp-disabled:hover {
-  // @include material-shadow(2);
-  // @include material-hover(0);
-  // top: 0px;
-// }

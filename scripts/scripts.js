@@ -114,26 +114,26 @@ var CAP_SIZE = 1.20;
   // }).error(function(){
   //   console.log('error');
   // });
-$('.auto-complete-name').autocomplete({
-  minLength: 0,
-  source: function(req, add) {
-    add($.map(capData, function(el) {
-      return {
-        label: el.name,
-        value: el.filename
-      };
-    }));
-  },
-  focus: function(event, ui) {
-    $(this).val(ui.item.label);
-    return false;
-  },
-  select: function(event, ui) {
-    $(this).val(ui.item.label);
-        // $(this)
-        return false;
-      }
-    });
+// $('.auto-complete-name').autocomplete({
+//   minLength: 0,
+//   source: function(req, add) {
+//     add($.map(capData, function(el) {
+//       return {
+//         label: el.name,
+//         value: el.filename
+//       };
+//     }));
+//   },
+//   focus: function(event, ui) {
+//     $(this).val(ui.item.label);
+//     return false;
+//   },
+//   select: function(event, ui) {
+//     $(this).val(ui.item.label);
+//         // $(this)
+//         return false;
+//       }
+//     });
 
 });
 

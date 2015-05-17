@@ -10,27 +10,15 @@
 
 }
 
-.toggle {
-  width: 175px;
-  float: right;
-  & > .collapse {
-    font-family: "FontAwesome";
-    cursor: pointer;
-    float: right;
-    text-align: right;
-    &:before {
-      content: "\f0a8";
-    }
-  }
-  @include clearfix();
-  &.in > .collapse:before {
-      content: "\f0a9";
-  }
+select.background-image-selector {
+  width: 231px;
+  padding-top: .25em;
+  padding-bottom: .25em;
 }
 
-input {
+input, select {
   border: 1px solid $base-color-border;
-  padding: 15px;
+  padding: .5em;
   background: rgba(255,255,255, .5);
   margin: 0 0 10px 0px;
   color: $black;
@@ -96,6 +84,27 @@ input:read-only {
   background:transparent;
   color: $text-color;
   font-size: 1.2em;
+}
+
+
+
+// toggle inputs
+.toggle {
+  width: 175px;
+  float: right;
+  & > .collapse {
+    font-family: "FontAwesome";
+    cursor: pointer;
+    float: right;
+    text-align: right;
+    &:before {
+      content: "\f0a8";
+    }
+  }
+  @include clearfix();
+  &.in > .collapse:before {
+      content: "\f0a9";
+  }
 }
 
 // toggle hack, highly recommend re-tooling this

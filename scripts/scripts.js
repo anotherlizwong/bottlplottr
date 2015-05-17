@@ -155,3 +155,8 @@ function toggleView(e) {
     $(".toggle").addClass("in");
   }
 }
+
+function updateBackground() {
+  var filename = $(".background-image-selector").val();
+  $("#grid").css("background-image", "url(assets/"+filename+")");
+}

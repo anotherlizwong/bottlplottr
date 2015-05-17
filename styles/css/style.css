@@ -8,7 +8,7 @@
   margin: 1em auto;
   clear: both;
   float: left;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 #grid .cell {
   background-color: transparent;
@@ -154,6 +154,7 @@ input:read-only {
   z-index: 10;
   top: 15em;
   left: 1em;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 .toggled .auto-complete-name, .toggled [name="name"], .toggled [name="number"], .toggled .save, .toggled .edit, .toggled .delete, .toggled .text-field, .toggled .number-field, .toggled #add_legend, .toggled input:not([readonly]), .toggled .sp-replacer:not(.sp-disabled), .toggled .sp-replacer:not(.sp-disabled) + [name="id"] + .save + .edit + .color_paint {
   display: none;

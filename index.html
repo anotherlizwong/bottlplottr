@@ -43,12 +43,25 @@
       <div>
         <input type="number" id="y_ft" placeholder="Optional"> ft <input type="number" id="y_in" placeholder="Length" required title="Length"> in
       </div>
+      <div>
+        <select class="background-image-selector" onchange="javascript:updateBackground();">
+          <option disabled selected>Select background image</option>
+          <option value="woodtexture7.jpg">Default wood texture</option>
+          <option value="dark_wood.jpg">Dark wood floor</option>
+          <option value="fake_wood.jpg">Light wood floor</option>
+          <option value="horizontal_wood.jpg">Wood boards</option>
+          <option value="metal.jpg">Metal sheet</option>
+          <option value="stone.jpg">Stone surface</option>
+          <option value="space.png">Space</option>
+        </select>
+      </div>
       <button id="create_grid" title="Reload layout"><i class="fa fa-refresh"></i> Surface</button>
     </form>
 
     <div class="selectable">
       <div id="grid">
       </div>
+
     </div>
 
   </div>

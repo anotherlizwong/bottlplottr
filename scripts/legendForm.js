@@ -8,6 +8,8 @@ var legendEntrySubmit = function (event) {
   var id = $(this).find("[name=id]").val();
   var color = new Color(name, hex, count, id);
 
+  $(this).find('.sp-replacer').click(legendEntryPaint);
+
   addColorToLegend(color);
 
   return false;
@@ -100,6 +102,6 @@ function addLegendEntry() {
 
   legendEntry.submit(legendEntrySubmit);
   legendEntry.find(".edit").click(legendEntryEdit);
-  legendEntry.find(".color_paint").click(legendEntryPaint);
+  //legendEntry.find(".color_paint").click(legendEntryPaint);
 
 }

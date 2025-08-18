@@ -1,3 +1,16 @@
+.cap, .drag {
+  width: 135px;
+  height: 135px;
+  margin: 7.5px;
+  border-radius: 150px;
+  background-color: green;
+}
+
+.empty > .cap, .empty > .drag {
+  background-color: transparent;
+  border: 4px dashed #999;
+}
+
 #grid {
   width: 40em;
   height: 30em;
@@ -412,6 +425,11 @@ body {
 
 i {
   padding: 5px;
+}
+
+.drag {
+  position: absolute;
+  cursor: move;
 }
 
 /*# sourceMappingURL=style.css.map */

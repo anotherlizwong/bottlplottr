@@ -1,0 +1,5 @@
+.drag {
+  @extend .cap;
+  position: absolute;
+  cursor: move;
+}

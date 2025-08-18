@@ -1,0 +1,135 @@
+.container {
+  float:left;
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid $base-color-border;
+  background-color: $base-color;
+  color: $text-color;
+  @include border-radius(1px);
+  @include material-shadow(1);
+
+}
+
+select.background-image-selector {
+  width: 231px;
+  padding-top: .25em;
+  padding-bottom: .25em;
+}
+
+input, select {
+  border: 1px solid $base-color-border;
+  padding: .5em;
+  background: rgba(255,255,255, .5);
+  margin: 0 0 10px 0px;
+  color: $black;
+  font-size: 1.2em;
+  &:focus {
+    background: rgba(255,255,255, .7);
+    @include transition();
+  }
+}
+input:not([type=submit]):not([type=file]) {
+  // intentionally blank
+}
+
+input[type="number"],.number-field {
+  width: 85px;
+  text-align: right;
+}
+.text-field {
+  width: 241px;
+}
+.number-field,.text-field {
+  padding: 1em;
+  font-size: 1.2em;
+  float: left;
+}
+.overall-total {
+  width: 100%;
+  @include clearfix();
+}
+input + .total {
+  display: none;
+  font-size: 1.2em;
+  &:before {
+    content: '/';
+    padding-right: .5em;
+    padding-left: .5em;
+  }
+}
+input:read-only + .total {
+  display: inline;
+}
+
+.total + .total:before {
+  content: '/';
+  padding-right: .5em;
+  padding-left: .5em;
+}
+
+::-webkit-input-placeholder {
+ color: $placeholder-color;
+}
+:-moz-placeholder { /* Firefox 18- */
+ color: $placeholder-color;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+ color: $placeholder-color;
+}
+:-ms-input-placeholder {
+ color: $placeholder-color;
+}
+
+input:read-only {
+  background:transparent;
+  color: $text-color;
+  font-size: 1.2em;
+}
+
+
+
+// toggle inputs
+.toggle {
+  width: 175px;
+  float: right;
+  & > .collapse {
+    font-family: "FontAwesome";
+    cursor: pointer;
+    float: right;
+    text-align: right;
+    &:before {
+      content: "\f0a8";
+    }
+  }
+  @include clearfix();
+  &.in > .collapse:before {
+      content: "\f0a9";
+  }
+}
+
+// toggle hack, highly recommend re-tooling this
+// for any future builds
+.toggled {
+  & .auto-complete-name,
+  & [name="name"],
+  & [name="number"],
+  & .save,
+  & .edit,
+  & .delete,
+  & .text-field,
+  & .number-field,
+  & #add_legend,
+  & input:not([readonly]),
+  & .sp-replacer:not(.sp-disabled),
+  & .sp-replacer:not(.sp-disabled) + [name="id"] + .save + .edit + .color_paint {
+    display: none;
+  }
+  & .toggle {
+    width: 100%;
+  }
+  position: fixed;
+  z-index: 10;
+  top: 15em;
+  left: 1em;
+  @include material-shadow(3);
+}

@@ -1,0 +1,23 @@
+.selectable .ui-selecting {
+  @exends .cap;
+  background: $cap-active-color!important;
+  opacity: .9;
+  &:hover {
+    opacity: .9;
+  }
+}
+.selectable {
+  padding: 10em;
+  // width: 100%;
+  @include clearfix();
+}
+
+.selectable  .ui-selected {
+  background: $cap-selected-color!important;
+  color: $white;
+  opacity: .9;
+  @extends .cap;
+  &:hover {
+    opacity: .9;
+  }
+}

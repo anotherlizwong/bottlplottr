@@ -1,0 +1,89 @@
+.cap{
+  &.angryorchard {
+    @include bg-image("angryorchard");
+  }
+  &.breckenridge {
+    @include bg-image("breckenridge");
+  }
+  &.cocacola {
+    @include bg-image("cocacola");
+  }
+  &.gooseisland {
+    @include bg-image("gooseisland");
+  }
+  &.guiness-bottl {
+    @include bg-image("guiness-bottl");
+  }
+  &.guinness {
+    @include bg-image("guinness");
+  }
+  &.hofbrauhaus {
+    @include bg-image("hofbrauhaus");
+  }
+  &.hooker {
+    @include bg-image("hooker");
+  }
+  &.killians-irishred {
+    @include bg-image("killians-irishred");
+  }
+  &.michelob-lager {
+    @include bg-image("michelob-lager");
+  }
+  &.miller-draft {
+    @include bg-image("miller-draft");
+  }
+  &.millerlight-gold {
+    @include bg-image("millerlight-gold");
+  }
+  &.samadams-light {
+    @include bg-image("samadams-light");
+  }
+  &.samadams-seasonal {
+    @include bg-image("samadams-seasonal");
+  }
+  &.stellaartois {
+    @include bg-image("stellaartois");
+  }
+  &.summit-bohemian {
+    @include bg-image("summit-bohemian");
+  }
+  &.traveler {
+    @include bg-image("traveler");
+  }
+  &.smithwicks {
+    @include bg-image("smithwicks");
+  }
+  &.shipyard-anniversary {
+    @include bg-image("shipyard-anniversary");
+  }
+  &.corona-extra {
+    @include bg-image("corona-extra");
+  }
+  &.kona-yellow {
+    @include bg-image("kona-yellow");
+  }
+  &.batch19 {
+    @include bg-image("batch19");
+  }
+  &.newportstorm {
+    @include bg-image("newportstorm");
+  }
+  &.oldeenglish800 {
+    @include bg-image("oldeenglish800");
+  }
+  &.zywiec {
+    @include bg-image("zywiec");
+  }
+  &.smirnoff-red {
+    @include bg-image("smirnoff-red");
+  }
+  &.smirnoff-blue {
+    @include bg-image("smirnoff-blue");
+  }
+  &.smirnoff-burgandy {
+    @include bg-image("smirnoff-burgandy");
+  }
+  &.samadams {
+    @include bg-image("samadams");
+  }
+}

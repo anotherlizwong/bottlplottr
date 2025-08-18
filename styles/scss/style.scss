@@ -1,2 +1,26 @@
 @import "variables", "cap", "grid";
 @import "drag";
+@import "../bourbon/bourbon";
+@import "variables", "mixins", "grid";
+@import "inputs";
+@import "buttons";
+@import "cap";
+@import "custom-caps";
+@import "selectable";
+
+.hidden {
+  visibility: hidden;
+}
+
+.remove {
+  display: none;
+}
+
+body {
+  background-color: $background-color;
+  font-family: 'Arial';
+}
+
+i {
+  padding: 5px;
+}

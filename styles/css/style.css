@@ -12,24 +12,419 @@
 }
 
 #grid {
-  border: 1px solid #000;
+  width: 40em;
+  height: 30em;
+  border: none;
   background: #fff url("../../assets/woodtexture7.jpg") repeat left top;
-  padding: 7.5px;
-  overflow: auto;
+  padding: 2.5px;
+  overflow: hidden;
+  margin: 1em auto;
+  clear: both;
+  float: left;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 #grid .cell {
   background-color: transparent;
   float: left;
-  width: 150px;
-  height: 150px;
+  width: 50px;
+  height: 50px;
 }
 #grid .row {
   border-color: #999;
   clear: both;
   width: 100%;
 }
-#grid .row:nth-child(odd) {
-  padding-left: 75px;
+#grid .row:nth-child(even) {
+  padding-left: 25px;
+}
+#grid::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.container {
+  float: left;
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid #226fbe;
+  background-color: #226fbe;
+  color: #fff;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -ms-border-radius: 1px;
+  border-radius: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+select.background-image-selector {
+  width: 231px;
+  padding-top: .25em;
+  padding-bottom: .25em;
+}
+
+input, select {
+  border: 1px solid #226fbe;
+  padding: .5em;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 0 10px 0px;
+  color: #000;
+  font-size: 1.2em;
+}
+input:focus, select:focus {
+  background: rgba(255, 255, 255, 0.7);
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+
+input[type="number"], .number-field {
+  width: 85px;
+  text-align: right;
+}
+
+.text-field {
+  width: 241px;
+}
+
+.number-field, .text-field {
+  padding: 1em;
+  font-size: 1.2em;
+  float: left;
+}
+
+.overall-total {
+  width: 100%;
+}
+.overall-total::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+input + .total {
+  display: none;
+  font-size: 1.2em;
+}
+input + .total:before {
+  content: '/';
+  padding-right: .5em;
+  padding-left: .5em;
+}
+
+input:read-only + .total {
+  display: inline;
+}
+
+.total + .total:before {
+  content: '/';
+  padding-right: .5em;
+  padding-left: .5em;
+}
+
+::-webkit-input-placeholder {
+  color: #f2f2f2;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #f2f2f2;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #f2f2f2;
+}
+
+:-ms-input-placeholder {
+  color: #f2f2f2;
+}
+
+input:read-only {
+  background: transparent;
+  color: #fff;
+  font-size: 1.2em;
+}
+
+.toggle {
+  width: 175px;
+  float: right;
+}
+.toggle > .collapse {
+  font-family: "FontAwesome";
+  cursor: pointer;
+  float: right;
+  text-align: right;
+}
+.toggle > .collapse:before {
+  content: "\f0a8";
+}
+.toggle::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.toggle.in > .collapse:before {
+  content: "\f0a9";
+}
+
+.toggled {
+  position: fixed;
+  z-index: 10;
+  top: 15em;
+  left: 1em;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.toggled .auto-complete-name, .toggled [name="name"], .toggled [name="number"], .toggled .save, .toggled .edit, .toggled .delete, .toggled .text-field, .toggled .number-field, .toggled #add_legend, .toggled input:not([readonly]), .toggled .sp-replacer:not(.sp-disabled), .toggled .sp-replacer:not(.sp-disabled) + [name="id"] + .save + .edit + .color_paint {
+  display: none;
+}
+.toggled .toggle {
+  width: 100%;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  color: #fff;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+button:hover {
+  color: #b3b3b3;
+  background-color: #0b233c;
+}
+
+.cap, .sp-replacer.sp-light, .sp-replacer.sp-light:hover {
+  width: 45px;
+  height: 45px;
+  margin: 2.5px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -ms-border-radius: 50px;
+  border-radius: 50px;
+  background-color: #17aa56;
+}
+.cap:hover, .sp-replacer.sp-light:hover {
+  opacity: .8;
+}
+.cap.empty, .empty.sp-replacer.sp-light {
+  background-color: #fff;
+  opacity: .15;
+  border: 1px dashed #999;
+}
+.cap.empty:hover, .empty.sp-replacer.sp-light:hover {
+  opacity: .4;
+}
+
+.sp-replacer.sp-light, .sp-replacer.sp-light:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  width: 37.5px;
+  height: 37.5px;
+  padding: inherit;
+  background-color: transparent;
+  border: none;
+}
+.sp-replacer.sp-light.sp-active, .sp-replacer.sp-light:hover.sp-active {
+  border-color: transparent;
+}
+.sp-replacer.sp-light .sp-dd, .sp-replacer.sp-light:hover .sp-dd {
+  display: none;
+}
+.sp-replacer.sp-light .sp-preview, .sp-replacer.sp-light:hover .sp-preview {
+  background-image: none;
+  width: 37.5px;
+  height: 37.5px;
+  -moz-border-radius: 37.5px;
+  -webkit-border-radius: 37.5px;
+  -ms-border-radius: 37.5px;
+  border-radius: 37.5px;
+}
+.sp-replacer.sp-light .sp-preview .sp-preview-inner, .sp-replacer.sp-light:hover .sp-preview .sp-preview-inner {
+  -moz-border-radius: 37.5px;
+  -webkit-border-radius: 37.5px;
+  -ms-border-radius: 37.5px;
+  border-radius: 37.5px;
+}
+
+.sp-replacer.sp-light:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  top: -5px;
+}
+.sp-replacer.sp-light:hover:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-transform: translateY(-5px);
+  -moz-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  -o-transform: translateY(-5px);
+  transform: translateY(-5px);
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+
+.cap.angryorchard, .angryorchard.sp-replacer.sp-light {
+  background: url("../../assets/caps/angryorchard.png");
+  background-size: contain;
+}
+.cap.breckenridge, .breckenridge.sp-replacer.sp-light {
+  background: url("../../assets/caps/breckenridge.png");
+  background-size: contain;
+}
+.cap.cocacola, .cocacola.sp-replacer.sp-light {
+  background: url("../../assets/caps/cocacola.png");
+  background-size: contain;
+}
+.cap.gooseisland, .gooseisland.sp-replacer.sp-light {
+  background: url("../../assets/caps/gooseisland.png");
+  background-size: contain;
+}
+.cap.guiness-bottl, .guiness-bottl.sp-replacer.sp-light {
+  background: url("../../assets/caps/guiness-bottl.png");
+  background-size: contain;
+}
+.cap.guinness, .guinness.sp-replacer.sp-light {
+  background: url("../../assets/caps/guinness.png");
+  background-size: contain;
+}
+.cap.hofbrauhaus, .hofbrauhaus.sp-replacer.sp-light {
+  background: url("../../assets/caps/hofbrauhaus.png");
+  background-size: contain;
+}
+.cap.hooker, .hooker.sp-replacer.sp-light {
+  background: url("../../assets/caps/hooker.png");
+  background-size: contain;
+}
+.cap.killians-irishred, .killians-irishred.sp-replacer.sp-light {
+  background: url("../../assets/caps/killians-irishred.png");
+  background-size: contain;
+}
+.cap.michelob-lager, .michelob-lager.sp-replacer.sp-light {
+  background: url("../../assets/caps/michelob-lager.png");
+  background-size: contain;
+}
+.cap.miller-draft, .miller-draft.sp-replacer.sp-light {
+  background: url("../../assets/caps/miller-draft.png");
+  background-size: contain;
+}
+.cap.millerlight-gold, .millerlight-gold.sp-replacer.sp-light {
+  background: url("../../assets/caps/millerlight-gold.png");
+  background-size: contain;
+}
+.cap.samadams-light, .samadams-light.sp-replacer.sp-light {
+  background: url("../../assets/caps/samadams-light.png");
+  background-size: contain;
+}
+.cap.samadams-seasonal, .samadams-seasonal.sp-replacer.sp-light {
+  background: url("../../assets/caps/samadams-seasonal.png");
+  background-size: contain;
+}
+.cap.stellaartois, .stellaartois.sp-replacer.sp-light {
+  background: url("../../assets/caps/stellaartois.png");
+  background-size: contain;
+}
+.cap.summit-bohemian, .summit-bohemian.sp-replacer.sp-light {
+  background: url("../../assets/caps/summit-bohemian.png");
+  background-size: contain;
+}
+.cap.traveler, .traveler.sp-replacer.sp-light {
+  background: url("../../assets/caps/traveler.png");
+  background-size: contain;
+}
+.cap.smithwicks, .smithwicks.sp-replacer.sp-light {
+  background: url("../../assets/caps/smithwicks.png");
+  background-size: contain;
+}
+.cap.shipyard-anniversary, .shipyard-anniversary.sp-replacer.sp-light {
+  background: url("../../assets/caps/shipyard-anniversary.png");
+  background-size: contain;
+}
+.cap.corona-extra, .corona-extra.sp-replacer.sp-light {
+  background: url("../../assets/caps/corona-extra.png");
+  background-size: contain;
+}
+.cap.kona-yellow, .kona-yellow.sp-replacer.sp-light {
+  background: url("../../assets/caps/kona-yellow.png");
+  background-size: contain;
+}
+.cap.batch19, .batch19.sp-replacer.sp-light {
+  background: url("../../assets/caps/batch19.png");
+  background-size: contain;
+}
+.cap.newportstorm, .newportstorm.sp-replacer.sp-light {
+  background: url("../../assets/caps/newportstorm.png");
+  background-size: contain;
+}
+.cap.oldeenglish800, .oldeenglish800.sp-replacer.sp-light {
+  background: url("../../assets/caps/oldeenglish800.png");
+  background-size: contain;
+}
+.cap.zywiec, .zywiec.sp-replacer.sp-light {
+  background: url("../../assets/caps/zywiec.png");
+  background-size: contain;
+}
+.cap.smirnoff-red, .smirnoff-red.sp-replacer.sp-light {
+  background: url("../../assets/caps/smirnoff-red.png");
+  background-size: contain;
+}
+.cap.smirnoff-blue, .smirnoff-blue.sp-replacer.sp-light {
+  background: url("../../assets/caps/smirnoff-blue.png");
+  background-size: contain;
+}
+.cap.smirnoff-burgandy, .smirnoff-burgandy.sp-replacer.sp-light {
+  background: url("../../assets/caps/smirnoff-burgandy.png");
+  background-size: contain;
+}
+.cap.samadams, .samadams.sp-replacer.sp-light {
+  background: url("../../assets/caps/samadams.png");
+  background-size: contain;
+}
+
+.selectable .ui-selecting {
+  @exends .cap;
+  background: #FECA40 !important;
+  opacity: .9;
+}
+.selectable .ui-selecting:hover {
+  opacity: .9;
+}
+
+.selectable {
+  padding: 10em;
+}
+.selectable::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.selectable .ui-selected {
+  background: #F39814 !important;
+  color: #fff;
+  opacity: .9;
+  @extends .cap;
+}
+.selectable .ui-selected:hover {
+  opacity: .9;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.remove {
+  display: none;
+}
+
+body {
+  background-color: #4593e3;
+  font-family: 'Arial';
+}
+
+i {
+  padding: 5px;
 }
 
 .drag {

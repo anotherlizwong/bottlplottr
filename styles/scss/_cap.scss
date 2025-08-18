@@ -2,12 +2,49 @@
   width: $cap-diameter - $buffer*2;
   height: $cap-diameter - $buffer*2;
   margin: $buffer;
-  border-radius: $cap-diameter;
+  @include border-radius($cap-diameter);
   background-color: $cap-color;
-  // border: 10px dotted white;
-  // cursor: move;
+  &:hover {
+    opacity: .8;
+  }
+  &.empty {
+    background-color: $white;
+    opacity: .15;
+    border: 1px dashed $gray-light;
+    &:hover {
+      opacity: .4;
+    }
+  }
 }
-.empty > .cap {
-  background-color: $cell-color;
-  border: 4px dashed $gray-light;
+
+// override color picker to make it a cap
+$micro-cap: $cap-diameter*.75;
+.sp-replacer.sp-light, .sp-replacer.sp-light:hover {
+  @extend .cap;
+  @include material-shadow(2);
+  width: $micro-cap;
+  height: $micro-cap;
+  padding: inherit;
+  background-color: transparent;
+  border: none;
+  &.sp-active {
+    border-color: transparent;
+  }
+  .sp-dd {
+    display: none;
+  }
+  .sp-preview {
+    background-image: none;
+    width: $micro-cap;
+    height: $micro-cap;
+    @include border-radius($micro-cap);
+    .sp-preview-inner {
+      @include border-radius($micro-cap);
+    }
+  }
+}
+.sp-replacer.sp-light:hover {
+  @include material-shadow(4);
+  @include material-hover(2);
+  top: -5px;
 }
